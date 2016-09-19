@@ -18,7 +18,7 @@ if ($projects) {
       $percent_width = !empty($project['percent_width']) ? $project['percent_width'] . '%' : '0';
 ?>
 
-    <article id="post-<?php echo $project['id']; ?>" style="margin-top: <?php _e($top_margin); ?>; left: <?php _e($side_margin); ?>;" class="text-align-center grid-item item-s-12<?php echo $single_row != 'on' ? ' item-m-6"' : '"';?>>
+    <article id="post-<?php echo $project['id']; ?>" style="margin-top: <?php _e($top_margin); ?>; left: <?php _e($side_margin); ?>;" class="home-project-item text-align-center grid-item item-s-12<?php echo $single_row != 'on' ? ' item-m-6"' : '"';?>>
 
       <a href="<?php echo get_the_permalink($project['id']) ?>">
         <?php echo wp_get_attachment_image( $project['image_id'], 'full', false, array('style' => 'max-width: ' . $percent_width) ); ?>
@@ -38,7 +38,7 @@ if ($projects) {
     </div>
   </section>
 
-  <?php get_template_part('partials/pagination'); ?>
+  <?php get_template_part('partials/cam-control'); ?>
 
 </main>
 

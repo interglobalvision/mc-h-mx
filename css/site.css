@@ -729,6 +729,19 @@ img {
   max-width: 100%;
   height: auto;
 }
+.cam-control {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+}
+.cam-ui {
+  pointer-events: auto;
+}
+.cam-slider {
+  width: 100%;
+}
 .container {
   width: 96%;
 }
@@ -990,6 +1003,10 @@ h3,
 .font-size-h3 {
   font-size: 16px;
 }
+.cam-buttons {
+  width: 70px;
+  height: 70px;
+}
 @media screen and (min-width: 720px) {
   .margin-top-micro {
     margin-top: 7px;
@@ -1236,6 +1253,10 @@ h3,
   }
   .grid-column > .item-m-12 {
     max-height: 100%;
+  }
+  .cam-buttons {
+    width: 105px;
+    height: 105px;
   }
 }
 @media screen and (min-width: 1024px) {
@@ -1484,6 +1505,10 @@ h3,
   }
   .padding-bottom-large {
     padding-bottom: 120px;
+  }
+  .cam-buttons {
+    width: 120px;
+    height: 120px;
   }
 }
 @media screen and (min-width: 1280px) {
