@@ -5,6 +5,7 @@ $projects = IGV_get_option('_igv_home_layout_options', '_igv_home_projects');
 ?>
 
 <main id="main-content">
+  <div class="cam-feed"></div>
   <section id="posts">
     <div class="container">
       <div class="grid-row">
