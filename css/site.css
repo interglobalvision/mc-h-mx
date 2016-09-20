@@ -735,6 +735,9 @@ img {
   max-width: 100%;
   height: auto;
 }
+.gallery-image-holder {
+  margin-bottom: 1rem;
+}
 .container {
   width: 96%;
 }

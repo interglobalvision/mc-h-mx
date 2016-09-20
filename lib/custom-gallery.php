@@ -78,7 +78,7 @@ function my_gallery_shortcode($attr) {
     $image_output = wp_get_attachment_image( $id, 'item-l-9-16x9', false, $attr );
 
     $output .= "
-      <div class='gallery-image-holder margin-bottom-basic margin-top-basic {$orientation}'>
+      <div class='gallery-image-holder {$orientation}'>
         $image_output
       </div>";
 
