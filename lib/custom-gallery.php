@@ -75,7 +75,7 @@ function my_gallery_shortcode($attr) {
       $orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
     }
 
-    $image_output = wp_get_attachment_image( $id, 'gallery', false, $attr );
+    $image_output = wp_get_attachment_image( $id, 'item-l-9-16x9', false, $attr );
 
     $output .= "
       <div class='gallery-image-holder {$orientation}'>
