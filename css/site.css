@@ -673,6 +673,12 @@ html {
 body {
   line-height: 1.35;
 }
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+}
 p {
   margin-bottom: 1rem;
 }
