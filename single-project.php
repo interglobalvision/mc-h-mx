@@ -17,17 +17,12 @@ if( have_posts() ) {
 
     <article <?php post_class('grid-row'); ?> id="post-<?php the_ID(); ?>">
 
-      <div class="grid-item item-s-11 offset-s-1 item-m-10 item-l-8">
-        <a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
+      <div class="grid-item item-s-12 project-title">
+        <h1><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h1>
       </div>
 
-      <div class="grid-item item-s-12 item-m-10 item-l-8">
-
-      </div>
-
-      <div class="grid-item item-s-11 offset-s-1 item-m-10 item-l-8">
+      <div class="grid-item item-s-12 project-content">
         <?php the_content(); ?>
-        <?php echo !empty($english) ? apply_filters('the_content', $english) : ''; ?>
       </div>
 
     </article>
@@ -40,7 +35,7 @@ if( have_posts() ) {
 <?php
 } ?>
       <div class="grid-row">
-        <div class="grid-item item-s-11 offset-s-1 item-m-10 item-l-8 project-list">
+        <div class="grid-item item-s-12 item-m-10 item-l-8 project-list">
           <ul>
 <?php 
 $projects = get_posts('post_type=project');
