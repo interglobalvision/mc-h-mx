@@ -11,9 +11,6 @@ get_header();
 if( have_posts() ) {
   while( have_posts() ) {
     the_post();
-
-    $images = get_post_meta($post->ID, '_igv_project_images', true);
-    $english = get_post_meta($post->ID, '_igv_content_en', true);
 ?>
 
     <article <?php post_class('grid-row'); ?> id="post-<?php the_ID(); ?>">
