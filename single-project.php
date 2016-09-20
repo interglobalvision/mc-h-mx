@@ -17,11 +17,11 @@ if( have_posts() ) {
 
     <article <?php post_class('grid-row'); ?> id="post-<?php the_ID(); ?>">
 
-      <div class="grid-item item-s-12 project-title">
+      <div class="grid-item item-s-12 item-l-9 project-title">
         <h1><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h1>
       </div>
 
-      <div class="grid-item item-s-12 project-content">
+      <div class="grid-item item-s-12 item-l-9 project-content">
         <?php the_content(); ?>
       </div>
 
