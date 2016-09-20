@@ -992,7 +992,7 @@ h3,
 }
 .project-title,
 .project-content p,
-.project-content.portait,
+.project-content .portrait,
 .project-list {
   margin-left: 49px;
 }
@@ -1245,7 +1245,7 @@ h3,
   }
   .project-title,
   .project-content p,
-  .project-content.portait,
+  .project-content .portrait,
   .project-list {
     margin-left: 73.5px;
   }
@@ -1510,7 +1510,7 @@ h3,
   }
   .project-title,
   .project-content p,
-  .project-content.portait,
+  .project-content .portrait,
   .project-list {
     margin-left: 84px;
   }
