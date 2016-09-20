@@ -42,7 +42,7 @@ function igv_cmb_metaboxes() {
   $i18n_meta = new_cmb2_box( array(
     'id'            => $prefix . 'i18n_meta',
     'title'         => __( 'English', 'cmb2' ),
-    'object_types'  => array('page', 'project', 'post',), // Post type
+    'object_types'  => array('page',), // Post type
     'show_names' => false,
   ) );
 
@@ -52,14 +52,5 @@ function igv_cmb_metaboxes() {
     'type'    => 'wysiwyg',
     'options' => array( 'textarea_rows' => 15, ),
   ) );
-
-  $project_meta = new_cmb2_box( array(
-    'id'            => $prefix . 'project_meta',
-    'title'         => __( 'Project', 'cmb2' ),
-    'object_types'  => array('project',), // Post type
-    'show_names' => false,
-  ) );
-
-  
 }
 ?>
