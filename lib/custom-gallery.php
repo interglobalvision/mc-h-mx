@@ -6,139 +6,93 @@ function my_gallery_shortcode($attr) {
   static $instance = 0;
   $instance++;
 
-  if ( !empty( $attr['ids'] ) ) {
-
+  if ( ! empty( $attr['ids'] ) ) {
     // 'ids' is explicitly ordered, unless you specify otherwise.
     if ( empty( $attr['orderby'] ) ) {
       $attr['orderby'] = 'post__in';
     }
-
     $attr['include'] = $attr['ids'];
   }
 
-  // Allow plugins/themes to override the default gallery template.
-  $output = apply_filters('post_gallery', '', $attr);
+  /**
+   * Filters the default gallery shortcode output.
+   *
+   * If the filtered output isn't empty, it will be used instead of generating
+   * the default gallery template.
+   *
+   * @since 2.5.0
+   * @since 4.2.0 The `$instance` parameter was added.
+   *
+   * @see gallery_shortcode()
+   *
+   * @param string $output   The gallery output. Default empty.
+   * @param array  $attr     Attributes of the gallery shortcode.
+   * @param int    $instance Unique numeric ID of this gallery shortcode instance.
+   */
+  $output = apply_filters( 'post_gallery', '', $attr, $instance );
   if ( $output != '' ) {
     return $output;
   }
 
-  // We're trusting author input, so let's at least make sure it looks like a valid orderby statement
-  if ( isset( $attr['orderby'] ) ) {
-    $attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
-    if ( !$attr['orderby'] ) {
-      unset( $attr['orderby'] );
-    }
-  }
-
-  // Setup attributes from options reverting to default
-
-  extract(shortcode_atts(array(
+  $atts = shortcode_atts( array(
     'order'      => 'ASC',
     'orderby'    => 'menu_order ID',
-    'id'         => $post->ID,
-    'itemtag'    => 'li',
-    'icontag'    => 'li',
-    'captiontag' => 'span',
-    'columns'    => 3,
-    'size'       => 'gallery',
+    'id'         => $post ? $post->ID : 0,
     'include'    => '',
-    'exclude'    => ''
-  ), $attr));
+    'exclude'    => '',
+  ), $attr, 'gallery' );
 
-  $id = intval($id);
+  $id = intval( $atts['id'] );
 
-  if ( 'RAND' == $order ) {
-    $orderby = 'none';
-  }
-
-  // Get array of attachments from gallery options
-
-  if ( !empty($include) ) {
-    $_attachments = get_posts( array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
-
-    $attachments = array();
-
-    foreach ( $_attachments as $key => $val ) {
-      $attachments[$val->ID] = $_attachments[$key];
-    }
-  } elseif ( !empty($exclude) ) {
-
-    $attachments = get_children( array('post_parent' => $id, 'exclude' => $exclude, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
-
-  } else {
-
-    $attachments = get_children( array('post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
-
-  }
-
-  // If no attachments return empty string
-
-  if ( empty($attachments) ) {
-    return '';
-  }
-
-  // If is feed render list of links [?]
-
-  if ( is_feed() ) {
-    $output = "\n";
-    foreach ( $attachments as $att_id => $attachment )
-      $output .= wp_get_attachment_link($att_id, $size, true) . "\n";
-    return $output;
-  }
-
-  // Set default values if options are invalid
-
-  $itemtag = tag_escape($itemtag);
-  $captiontag = tag_escape($captiontag);
-  $icontag = tag_escape($icontag);
-  $valid_tags = wp_kses_allowed_html('post');
-
-  if ( !isset( $valid_tags[$itemtag] ) ) {
-    $itemtag = 'dl';
-  }
-
-  if ( !isset( $valid_tags[$captiontag] ) ) {
-    $captiontag = 'dd';
-  }
-
-  if ( !isset( $valid_tags[$icontag] ) ) {
-    $icontag = 'dt';
-  }
-
-  // Setup gallery containing markup
+  $captiontag = tag_escape( $atts['captiontag'] );
 
   $selector = "gallery-{$instance}";
 
-  $gallery_div = "<div id='$selector' class='swiper-container gallery galleryid-{$id}'><div class='swiper-wrapper'>";
+  $gallery_div = "<div id='$selector' class='gallery galleryid-{$id}'>";
+
   $output = $gallery_div;
 
-  $i = 0;
+  if ( ! empty( $atts['include'] ) ) {
+    $_attachments = get_posts( array( 'include' => $atts['include'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
 
-  // Build markup from attachments array
-
-  foreach ($attachments as $id => $attachment) {
-
-    $tag = '';
-
-    $img = wp_get_attachment_image($id, $size);
-
-    // If caption is set make a variable of it
-
-    if ( $captiontag && trim($attachment->post_excerpt) ) {
-      $tag = "
-        <{$captiontag} class='wp-caption-text gallery-caption'>
-        " . wptexturize($attachment->post_excerpt) . "
-        </{$captiontag}>";
-    } else {
-      $tag = null;
+    $attachments = array();
+    foreach ( $_attachments as $key => $val ) {
+      $attachments[$val->ID] = $_attachments[$key];
     }
-
-    $output .= "<div>{$img}{$tag}</div>";
+  } elseif ( ! empty( $atts['exclude'] ) ) {
+    $attachments = get_children( array( 'post_parent' => $id, 'exclude' => $atts['exclude'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
+  } else {
+    $attachments = get_children( array( 'post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
   }
 
-  // Finish markup and return
+  $i = 0;
+  foreach ( $attachments as $id => $attachment ) {
 
-  $output .= "</div></div>\n";
+    $image_meta  = wp_get_attachment_metadata( $id );
+
+    $orientation = '';
+    if ( isset( $image_meta['height'], $image_meta['width'] ) ) {
+      $orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
+    }
+
+    $image_output = wp_get_attachment_image( $id, 'item-l-9-16x9', false, $attr );
+
+    $output .= "
+      <div class='gallery-image-holder {$orientation}'>
+        $image_output
+      </div>";
+
+    if ( $captiontag && trim($attachment->post_excerpt) ) {
+      $output .= "
+        <figcaption class='wp-caption-text gallery-caption' id='$selector-$id'>
+        " . wptexturize($attachment->post_excerpt) . "
+        </figcaption>";
+    }
+
+  }
+
+  $output .= "
+    </div>\n";
 
   return $output;
 }

@@ -39,6 +39,20 @@ function igv_cmb_metaboxes() {
    * Reference: https://github.com/WebDevStudios/CMB2/blob/master/example-functions.php
 	 */
 
+  $i18n_meta = new_cmb2_box( array(
+    'id'            => $prefix . 'i18n_meta',
+    'title'         => __( 'English', 'cmb2' ),
+    'object_types'  => array('page',), // Post type
+    'show_names' => false,
+  ) );
+
+  $i18n_meta->add_field( array(
+    'name'    => __( 'English text content', 'cmb2' ),
+    'id'      => $prefix . 'content_en',
+    'type'    => 'wysiwyg',
+    'options' => array( 'textarea_rows' => 15, ),
+  ) );
+
   $home_meta = new_cmb2_box( array(
     'id'            => $prefix . 'home_meta',
     'title'         => __( 'Home Layout', 'cmb2' ),
