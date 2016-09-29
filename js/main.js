@@ -44,7 +44,7 @@ Site.Camera = {
   bindButtons: function() {
     var command;
     // CHANGE THIS BASEURL //
-    var baseUrl = 'http://www.interglobal.vision/';
+    var baseUrl = 'http://estudioherrera.servehttp.com/api/';
 
     $('.cam-button').on('click', function() {
       command = $(this).attr('data-command');
