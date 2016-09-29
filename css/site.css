@@ -746,6 +746,7 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
+  background-image: url("http://estudioherrera.servehttp.com/");
   background-size: cover;
   background-position: center;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
