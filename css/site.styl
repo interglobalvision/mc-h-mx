@@ -41,52 +41,58 @@ html
 img
   max-width: 100%
   height: auto
-  
-.gallery-image-holder 
+
+.gallery-image-holder
   margin-bottom: 1rem
+
+#header
+  position: fixed
+  z-index: 100
+  width: 100%
 
 // ******************************************************
 
-// HOME 
+// HOME
 
-.cam-feed 
+.cam-feed
   position: fixed
-  z-index: -100
-  pointer-events: none 
   top: 0
   left: 0
+  z-index: -100
   width: 100%
   height: 100%
   background-image: url('http://estudioherrera.servehttp.com/')
-  background-size: cover
   background-position: center
-  opacity: 0.5
-  
+  background-size: cover
+  opacity: .5
+  pointer-events: none
+
 .home-project-item
-  opacity: 0.5
+  opacity: .5
 
 // ******************************************************
 
 // CAMERA CONTROL
 
-.cam-control 
+#cam-control
   position: fixed
   bottom: 0
-  left: 0
-  width: 100%
+  left: 10%
+  z-index: 90
+  width: 80%
   pointer-events: none
-  
+
 .cam-ui
   pointer-events: auto
-  
+
 .cam-fader
-  width: 100%  
+  width: 100%
 
 // ******************************************************
 
 // MEDIA QUERIES
 
-$gutter = 14px 
+$gutter = 14px
 
 $margin-micro = ($gutter / 3)
 $margin-tiny = ($gutter / 2)
@@ -94,13 +100,13 @@ $margin-small = ($gutter)
 $margin-basic = ($gutter * 2)
 $margin-mid = ($gutter * 3.5)
 $margin-large = ($gutter * 5)
-    
+
 $font-size-basic = 12px
 $font-size-h1 = 28px
 $font-size-h2 = 21px
 $font-size-h3 = 16px
 
-grid(96%, $gutter, s)
+grid(100%, $gutter, s)
 
 space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
 
@@ -111,22 +117,22 @@ font-sizes($font-size-basic, $font-size-h1, $font-size-h2, $font-size-h3)
 @media screen and (min-width: 720px)
 
   $gutter = 21px
-  
+
   $margin-micro = ($gutter / 3)
   $margin-tiny = ($gutter / 2)
   $margin-small = ($gutter)
   $margin-basic = ($gutter * 2)
   $margin-mid = ($gutter * 3.5)
   $margin-large = ($gutter * 5)
-  
+
   $font-size-basic = 14px
-  
+
   space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
-  
-  grid(680px, $gutter, m)
-  
+
+  grid(100%, $gutter, m)
+
   font-size($font-size-basic)
-  
+
   @import 'responsive/tablet'
 
 @media screen and (min-width: 1024px)
@@ -139,24 +145,24 @@ font-sizes($font-size-basic, $font-size-h1, $font-size-h2, $font-size-h3)
   $margin-basic = ($gutter * 2)
   $margin-mid = ($gutter * 3.5)
   $margin-large = ($gutter * 5)
-  
+
   $font-size-basic = 16px
 
-  grid(1000px, $gutter, l)
-  
+  grid(100%, $gutter, l)
+
   space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
-  
+
   font-size($font-size-basic)
 
   @import 'responsive/desktop'
-  
-@media screen and (min-width: 1280px)
-  
-  grid(1200px)
 
-@media screen and (min-width: 1366px)
-
-  grid(1300px)
+// @media screen and (min-width: 1280px)
+//
+//   grid(1200px)
+//
+// @media screen and (min-width: 1366px)
+//
+//   grid(1300px)
 
 /*@media screen and (min-width: 1680px)
 

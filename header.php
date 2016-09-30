@@ -28,5 +28,14 @@
 <section id="main-container">
 
   <header id="header">
-    <h1><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
+    <div class="container">
+      <div class="grid-row">
+        <div class="grid-item item-l-9">
+          <h1><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
+        </div>
+        <div class="grid-item item-l-3">
+          <a class="project-close" href="<?php echo home_url(); ?>">X</a>
+        </div>
+      </div>
+    </div>
   </header>

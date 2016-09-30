@@ -12,7 +12,7 @@ Site = {
 
     $(document).ready(function () {
       if ($('.cam-feed').length) {
-        _this.Camera.init();
+//         _this.Camera.init();
       }
     });
 
