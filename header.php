@@ -30,10 +30,10 @@
   <header id="header">
     <div class="container">
       <div class="grid-row">
-        <div class="grid-item item-l-9">
+        <div class="grid-item item-s-10">
           <h1><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
         </div>
-        <div class="grid-item item-l-3">
+        <div class="grid-item item-s-2 text-align-right">
           <a class="project-close" href="<?php echo home_url(); ?>">X</a>
         </div>
       </div>

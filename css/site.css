@@ -593,6 +593,20 @@ th {
   border-style: dashed;
 }
 @font-face {
+  font-family: 'AG Book Pro';
+  src: url("fonts/AGBookPro-Regular.eot");
+  src: url("fonts/AGBookPro-Regular.eot?#iefix") format('embedded-opentype'), url("fonts/AGBookPro-Regular.woff2") format('woff2'), url("fonts/AGBookPro-Regular.woff") format('woff'), url("fonts/AGBookPro-Regular.ttf") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'AG Book Pro';
+  src: url("fonts/AGBookPro-Italic.eot");
+  src: url("fonts/AGBookPro-Italic.eot?#iefix") format('embedded-opentype'), url("fonts/AGBookPro-Italic.woff2") format('woff2'), url("fonts/AGBookPro-Italic.woff") format('woff'), url("fonts/AGBookPro-Italic.ttf") format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
   font-family: 'fontello';
   src: url("fontello.eot");
   font-weight: normal;
@@ -671,7 +685,7 @@ th {
   content: '\e80c';
 }
 html {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'AG Book Pro';
   letter-spacing: 0.001em;
 }
 body {
@@ -687,7 +701,7 @@ p {
   margin-bottom: 1rem;
 }
 .font-sans {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'AG Book Pro';
 }
 .font-serif {
   font-family: Georgia, Times, "Times New Roman", serif;
@@ -746,6 +760,7 @@ img {
   position: fixed;
   z-index: 100;
   width: 100%;
+  height: 79px;
 }
 .cam-feed {
   position: fixed;
@@ -1043,6 +1058,9 @@ h3,
 .font-size-h3 {
   font-size: 16px;
 }
+#main-content {
+  padding-top: 65px;
+}
 .project-title,
 .project-content p,
 .project-content .portrait,
@@ -1300,6 +1318,9 @@ h3,
   }
   .grid-column > .item-m-12 {
     max-height: 100%;
+  }
+  #main-content {
+    padding-top: 58px;
   }
   .project-title,
   .project-content p,
@@ -1570,6 +1591,9 @@ h3,
   }
   .padding-bottom-large {
     padding-bottom: 120px;
+  }
+  #main-content {
+    padding-top: 55px;
   }
   .project-title,
   .project-content p,
