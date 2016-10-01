@@ -3,33 +3,28 @@ get_header();
 ?>
 
 <main id="main-content">
-  <section id="posts">
+  <section id="posts" class="container">
+    <div class="grid-row">
 
 <?php
 if( have_posts() ) {
   while( have_posts() ) {
     the_post();
 ?>
-
-    <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
-
-      <a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
-
-      <?php the_content(); ?>
-
-    </article>
-
+      <article <?php post_class('grid-item item-s-12'); ?> id="post-<?php the_ID(); ?>">
+        <a href="<?php the_permalink() ?>"><h2><?php the_title(); ?></h2></a>
+      </article>
 <?php
   }
 } else {
 ?>
-    <article class="u-alert"><?php _e('Sorry, no posts matched your criteria :{'); ?></article>
+      <article class="grid-item item-s-12 u-alert"><?php _e('Sorry, no posts matched your criteria :{'); ?></article>
 <?php
 } ?>
+      <?php get_template_part('partials/pagination'); ?>
 
+    </div>
   </section>
-
-  <?php get_template_part('partials/pagination'); ?>
 
 </main>
 
