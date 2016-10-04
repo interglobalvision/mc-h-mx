@@ -37,14 +37,36 @@ Site.Camera = {
   init: function() {
     _this = this;
 
+    _this.isLocalHost();
     _this.bindButtons();
     _this.bindFader();
+  },
+
+  isLocalHost: function() {
+    _this = this;
+
+    if (location.hostname === "localhost" || _this.getUrlParameter('isLocal')) {
+      _this.isLocal = true; 
+
+      _this.setLocalStyles();
+    } else {
+      _this.isLocal = false; 
+    }
+
+  },
+
+  setLocalStyles: function() {
+    $('.cam-feed').css('background-image', 'url(http://192.168.1.70)');
   },
 
   bindButtons: function() {
     var command;
     // CHANGE THIS BASEURL //
     var baseUrl = 'http://estudioherrera.servehttp.com/api/';
+
+    if(_this.isLocal) {
+      baseUrl = 'http://192.168.1.70/api/';
+    }
 
     $('.cam-button').on('click', function() {
       command = $(this).attr('data-command');
@@ -65,6 +87,22 @@ Site.Camera = {
       $('.home-project-item').css('opacity', (100 - $(this).val()) * .01);
     });
   },
+
+  getUrlParameter: function(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+      sURLVariables = sPageURL.split('&'),
+      sParameterName,
+      i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+      sParameterName = sURLVariables[i].split('=');
+
+      if (sParameterName[0] === sParam) {
+        return sParameterName[1] === undefined ? true : sParameterName[1];
+      }
+    }
+  },
+
 };
 
 Site.init();
