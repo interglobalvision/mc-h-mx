@@ -1,4 +1,4 @@
-<section class="cam-control margin-bottom-basic">
+<section id="cam-control">
   <div class="container">
     <div class="grid-row">
       <div class="grid-item item-s-8 item-m-7 item-l-5 grid-column justify-center align-items-start">
