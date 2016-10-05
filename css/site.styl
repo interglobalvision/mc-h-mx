@@ -75,6 +75,14 @@ $header-height = 79px
 
 // ******************************************************
 
+// PROJECT SINGLE
+
+.project-nav-arrow
+  margin: 0 .5rem
+  vertical-align: middle
+
+// ******************************************************
+
 // CAMERA CONTROL
 
 #cam-control
@@ -104,10 +112,10 @@ $margin-basic = ($gutter * 2)
 $margin-mid = ($gutter * 3.5)
 $margin-large = ($gutter * 5)
 
-$font-size-basic = 12px
-$font-size-h1 = 28px
-$font-size-h2 = 21px
-$font-size-h3 = 16px
+$font-size-basic = 17px
+$font-size-h1 = 30px
+$font-size-h2 = 24px
+$font-size-h3 = 17px
 
 grid(100%, $gutter, s)
 
@@ -128,7 +136,7 @@ font-sizes($font-size-basic, $font-size-h1, $font-size-h2, $font-size-h3)
   $margin-mid = ($gutter * 3.5)
   $margin-large = ($gutter * 5)
 
-  $font-size-basic = 14px
+  $font-size-basic = 16px
 
   space-maker($margin-micro, $margin-tiny, $margin-small, $margin-basic, $margin-mid, $margin-large)
 
@@ -149,7 +157,7 @@ font-sizes($font-size-basic, $font-size-h1, $font-size-h2, $font-size-h3)
   $margin-mid = ($gutter * 3.5)
   $margin-large = ($gutter * 5)
 
-  $font-size-basic = 16px
+  $font-size-basic = 17px
 
   grid(100%, $gutter, l)
 
@@ -158,19 +166,3 @@ font-sizes($font-size-basic, $font-size-h1, $font-size-h2, $font-size-h3)
   font-size($font-size-basic)
 
   @import 'responsive/desktop'
-
-// @media screen and (min-width: 1280px)
-//
-//   grid(1200px)
-//
-// @media screen and (min-width: 1366px)
-//
-//   grid(1300px)
-
-/*@media screen and (min-width: 1680px)
-
-  grid(1600px)
-
-@media screen and (min-width: 1920px)
-
-  grid(1800px)*/

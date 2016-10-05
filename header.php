@@ -34,7 +34,13 @@
           <h1><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
         </div>
         <div class="grid-item item-s-2 text-align-right">
-          <a class="project-close" href="<?php echo home_url(); ?>">X</a>
+          <?php
+            if (!is_home()) { ?>
+          <a class="project-close" href="<?php echo home_url(); ?>">
+            <?php echo url_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/close.svg'); ?>
+          </a>
+          <?php
+            } ?>
         </div>
       </div>
     </div>

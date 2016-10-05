@@ -782,6 +782,10 @@ img {
   filter: alpha(opacity=50);
   opacity: 0.5;
 }
+.project-nav-arrow {
+  margin: 0 0.5rem;
+  vertical-align: middle;
+}
 #cam-control {
   position: fixed;
   bottom: 0;
@@ -1044,19 +1048,19 @@ img {
   padding-bottom: 70px;
 }
 html {
-  font-size: 12px;
+  font-size: 17px;
 }
 h1,
 .font-size-h1 {
-  font-size: 28px;
+  font-size: 30px;
 }
 h2,
 .font-size-h2 {
-  font-size: 21px;
+  font-size: 24px;
 }
 h3,
 .font-size-h3 {
-  font-size: 16px;
+  font-size: 17px;
 }
 #main-content {
   padding-top: 65px;
@@ -1611,10 +1615,3 @@ h3,
     height: 120px;
   }
 }
-/*@media screen and (min-width: 1680px)
-
-  grid(1600px)
-
-@media screen and (min-width: 1920px)
-
-  grid(1800px)*/
