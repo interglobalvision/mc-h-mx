@@ -10,8 +10,8 @@
             <button data-command="up" class="cam-ui cam-button"></button>
           </div>
           <div class="grid-item no-gutter grid-row justify-between">
-            <button data-command="right" class="cam-ui cam-button"></button>
             <button data-command="left" class="cam-ui cam-button"></button>
+            <button data-command="right" class="cam-ui cam-button"></button>
           </div>
           <div class="grid-item no-gutter text-align-center">
             <button data-command="down" class="cam-ui cam-button"></button>
