@@ -82,8 +82,8 @@ Site.Camera = {
 
   bindFader: function() {
     $(document).on('input', '.cam-fader', function() {
-      var projectOpacity = $(this).val() > 49 ? (100 - $(this).val()) * .02 : 100,
-        camOpacity = $(this).val() < 50 ? $(this).val() * .02 : 100;
+      var projectOpacity = $(this).val() > 50 ? (100 - $(this).val()) * .02 : 100,
+        camOpacity = $(this).val() < 51 ? $(this).val() * .02 : 100;
 
       $('.cam-feed').css('opacity', camOpacity);
       $('.home-project-item').css('opacity', projectOpacity);
