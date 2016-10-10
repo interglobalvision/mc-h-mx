@@ -82,9 +82,11 @@ Site.Camera = {
 
   bindFader: function() {
     $(document).on('input', '.cam-fader', function() {
-      console.log($(this).val());
-      $('.cam-feed').css('opacity', $(this).val() * .01);
-      $('.home-project-item').css('opacity', (100 - $(this).val()) * .01);
+      var projectOpacity = $(this).val() > 49 ? (100 - $(this).val()) * .02 : 100,
+        camOpacity = $(this).val() < 50 ? $(this).val() * .02 : 100;
+
+      $('.cam-feed').css('opacity', camOpacity);
+      $('.home-project-item').css('opacity', projectOpacity);
     });
   },
 
