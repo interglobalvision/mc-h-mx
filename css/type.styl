@@ -98,31 +98,27 @@ a:visited
   color: inherit
   text-decoration: none
 
-font-sizes($size-basic = 19px, $size-h1 = false, $size-h2 = false, $size-h3 = false, $size-h4 = false, $size-h5 = false, $size-h6 = false)
+font-sizes($size-basic = 19px, $size-extra = false, $size-large = false, $size-mid = false, $size-small = false, $size-tiny = false)
 
-  html
+  html, .font-size-basic
     font-size: $size-basic
 
-  if ($size-h1)
-    h1, .font-size-h1
-      font-size: $size-h1
+  if ($size-extra)
+    .font-size-extra
+      font-size: $size-extra
 
-  if ($size-h2)
-    h2, .font-size-h2
-      font-size: $size-h2
+  if ($size-large)
+    .font-size-large
+      font-size: $size-large
 
-  if ($size-h3)
-    h3, .font-size-h3
-      font-size: $size-h3
+  if ($size-mid)
+    .font-size-mid
+      font-size: $size-mid
 
-  if ($size-h4)
-    h4, .font-size-h4
-      font-size: $size-h4
+  if ($size-small)
+    .font-size-small
+      font-size: $size-small
 
-  if ($size-h5)
-    h5, .font-size-h5
-      font-size: $size-h5
-
-  if ($size-h6)
-    h6, .font-size-h6
-      font-size: $size-h6
+  if ($size-tiny)
+    .font-size-tiny
+      font-size: $size-tiny
