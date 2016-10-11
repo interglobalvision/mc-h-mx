@@ -31,12 +31,12 @@
     <div class="container">
       <div class="grid-row">
         <div class="grid-item item-s-10">
-          <h1><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
+          <h1 class="font-size-large"><a href="<?php echo home_url('/info'); ?>"><?php bloginfo('name'); ?></a></h1>
         </div>
         <div class="grid-item item-s-2 text-align-right">
           <?php
             if (!is_home()) { ?>
-          <a class="project-close" href="<?php echo home_url(); ?>">
+          <a id="page-close" href="<?php echo home_url(); ?>">
             <?php echo url_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/close.svg'); ?>
           </a>
           <?php

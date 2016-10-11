@@ -14,6 +14,10 @@ Site = {
       if ($('.cam-feed').length) {
         _this.Camera.init();
       }
+
+      if ($('.lang-toggle').length) {
+        _this.bindLangToggle();
+      }
     });
 
   },
@@ -29,6 +33,12 @@ Site = {
       var string = $(this).html();
       string = string.replace(/ ([^ ]*)$/,'&nbsp;$1');
       $(this).html(string);
+    });
+  },
+
+  bindLangToggle: function() {
+    $('.lang-toggle').bind('click', function() {
+      $('.page-content').toggleClass('active');
     });
   },
 };

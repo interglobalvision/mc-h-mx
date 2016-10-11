@@ -758,6 +758,17 @@ img {
   width: 100%;
   height: 79px;
 }
+button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+body.home #page-close {
+  display: none;
+}
 .cam-feed {
   position: fixed;
   top: 0;
@@ -787,6 +798,15 @@ img {
 }
 .cam-fader {
   width: 100%;
+}
+.page-content {
+  display: none;
+}
+.page-content.active {
+  display: initial;
+}
+.page-content p {
+  max-width: 900px;
 }
 .container {
   width: 100%;
@@ -1035,20 +1055,12 @@ img {
 .padding-bottom-large {
   padding-bottom: 70px;
 }
-html {
-  font-size: 17px;
+html,
+.font-size-basic {
+  font-size: 18px;
 }
-h1,
-.font-size-h1 {
-  font-size: 30px;
-}
-h2,
-.font-size-h2 {
+.font-size-large {
   font-size: 24px;
-}
-h3,
-.font-size-h3 {
-  font-size: 17px;
 }
 #main-content {
   padding-top: 65px;
@@ -1311,6 +1323,13 @@ h3,
   .grid-column > .item-m-12 {
     max-height: 100%;
   }
+  html,
+  .font-size-basic {
+    font-size: 18px;
+  }
+  .font-size-large {
+    font-size: 26px;
+  }
   #main-content {
     padding-top: 58px;
   }
@@ -1334,6 +1353,9 @@ h3,
   .cam-buttons {
     width: 105px;
     height: 105px;
+  }
+  #contact-info {
+    font-size: 26px;
   }
 }
 @media screen and (min-width: 1024px) {
@@ -1583,6 +1605,13 @@ h3,
   }
   .padding-bottom-large {
     padding-bottom: 120px;
+  }
+  html,
+  .font-size-basic {
+    font-size: 18px;
+  }
+  .font-size-large {
+    font-size: 30px;
   }
   #main-content {
     padding-top: 55px;

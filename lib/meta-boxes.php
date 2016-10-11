@@ -39,14 +39,22 @@ function igv_cmb_metaboxes() {
    * Reference: https://github.com/WebDevStudios/CMB2/blob/master/example-functions.php
 	 */
 
-  $i18n_meta = new_cmb2_box( array(
-    'id'            => $prefix . 'i18n_meta',
-    'title'         => __( 'English', 'cmb2' ),
+  $info_meta = new_cmb2_box( array(
+    'id'            => $prefix . 'info_meta',
+    'title'         => __( 'Options', 'cmb2' ),
     'object_types'  => array('page',), // Post type
-    'show_names' => false,
+    'show_on'      => array( 'key' => 'id', 'value' => array( get_id_by_slug('info') ) ),
+    'show_names' => true,
   ) );
 
-  $i18n_meta->add_field( array(
+  $info_meta->add_field( array(
+    'name'    => __( 'Contact info', 'cmb2' ),
+    'id'      => $prefix . 'contact_info',
+    'type'    => 'wysiwyg',
+    'options' => array( 'textarea_rows' => 6, ),
+  ) );
+
+  $info_meta->add_field( array(
     'name'    => __( 'English text content', 'cmb2' ),
     'id'      => $prefix . 'content_en',
     'type'    => 'wysiwyg',
