@@ -9,10 +9,10 @@ if( have_posts() ) {
   while( have_posts() ) {
     the_post();
 ?>
-      <article <?php post_class('grid-row'); ?> id="post-<?php the_ID(); ?>">
+      <article <?php post_class('grid-row margin-top-small'); ?> id="post-<?php the_ID(); ?>">
 
         <div class="grid-item item-s-12 item-l-9 project-title margin-bottom-small">
-          <h1><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h1>
+          <h1 class="font-size-large"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h1>
         </div>
 
         <div class="grid-item item-s-12 project-content">
@@ -21,11 +21,11 @@ if( have_posts() ) {
 
       </article>
 
-      <div class="grid-row font-size-h1 margin-top-large">
+      <div class="grid-row font-size-large margin-top-mid">
         <?php get_template_part('partials/project-list'); ?>
       </div>
 
-      <div class="grid-row font-size-h1 margin-top-large margin-bottom-basic">
+      <div class="grid-row font-size-large margin-top-mid margin-bottom-basic">
         <?php get_template_part('partials/project-pagination'); ?>
       </div>
 <?php
