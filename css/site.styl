@@ -52,19 +52,19 @@ $header-height = 79px
   z-index: 100
   width: 100%
   height: $header-height
-  
+
 button
-  appearance: none
-  background: transparent 
-  border: 0
   padding: 0
+  border: 0
+  background: transparent
+  appearance: none
 
 // ******************************************************
 
 // HOME
 
-body.home 
-  #page-close 
+body.home
+  #page-close
     display: none
 
 .cam-feed
@@ -108,15 +108,17 @@ body.home
 
 .cam-fader
   width: 100%
-  
+
 // ******************************************************
 
-// PAGE INFO 
+// PAGE INFO
 
-.page-content 
-  display: none 
-  &.active 
+.page-content
+  display: none
+  &.active
     display: initial
+  p
+    max-width: 900px
 
 // ******************************************************
 

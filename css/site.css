@@ -479,65 +479,69 @@ th {
   -webkit-box-align: start;
   -ms-align-items: flex-start;
   -ms-flex-align: start;
-      -ms-grid-row-align: flex-start;
       align-items: flex-start;
 }
 .align-items-center {
   -webkit-box-align: center;
   -ms-align-items: center;
   -ms-flex-align: center;
-      -ms-grid-row-align: center;
       align-items: center;
 }
 .align-items-end {
   -webkit-box-align: end;
   -ms-align-items: flex-end;
   -ms-flex-align: end;
-      -ms-grid-row-align: flex-end;
       align-items: flex-end;
 }
 .align-items-baseline {
   -webkit-box-align: baseline;
   -ms-align-items: baseline;
   -ms-flex-align: baseline;
-      -ms-grid-row-align: baseline;
       align-items: baseline;
 }
 .align-items-stretch {
   -webkit-box-align: stretch;
   -ms-align-items: stretch;
   -ms-flex-align: stretch;
-      -ms-grid-row-align: stretch;
       align-items: stretch;
 }
 .align-self-auto {
+  -webkit-align-self: auto;
   -ms-align-self: auto;
   -ms-flex-item-align: auto;
+      -ms-grid-row-align: auto;
       align-self: auto;
 }
 .align-self-start {
+  -webkit-align-self: flex-start;
   -ms-align-self: flex-start;
   -ms-flex-item-align: start;
       align-self: flex-start;
 }
 .align-self-center {
+  -webkit-align-self: center;
   -ms-align-self: center;
   -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
       align-self: center;
 }
 .align-self-end {
+  -webkit-align-self: flex-end;
   -ms-align-self: flex-end;
   -ms-flex-item-align: end;
       align-self: flex-end;
 }
 .align-self-baseline {
+  -webkit-align-self: baseline;
   -ms-align-self: baseline;
   -ms-flex-item-align: baseline;
       align-self: baseline;
 }
 .align-self-stretch {
+  -webkit-align-self: stretch;
   -ms-align-self: stretch;
   -ms-flex-item-align: stretch;
+      -ms-grid-row-align: stretch;
       align-self: stretch;
 }
 .justify-start {
@@ -759,12 +763,12 @@ img {
   height: 79px;
 }
 button {
+  padding: 0;
+  border: 0;
+  background: transparent;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: transparent;
-  border: 0;
-  padding: 0;
 }
 body.home #page-close {
   display: none;
@@ -812,6 +816,9 @@ body.home #page-close {
 }
 .page-content.active {
   display: initial;
+}
+.page-content p {
+  max-width: 900px;
 }
 .container {
   width: 100%;
