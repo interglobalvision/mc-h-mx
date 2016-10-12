@@ -91,9 +91,17 @@ body.home
 
 // PROJECT SINGLE
 
-.project-nav-arrow
-  margin: 0 .5rem
-  vertical-align: middle
+.project-pagination
+  a 
+    display: flex
+    flex-direction: row
+    align-items: center
+  &:first-of-type
+    a
+      justify-content: flex-start
+  &:last-of-type
+    a
+      justify-content: flex-end
 
 // ******************************************************
 
