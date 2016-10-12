@@ -766,6 +766,9 @@ button {
   -moz-appearance: none;
   appearance: none;
 }
+button:focus {
+  outline: none;
+}
 body.home #page-close {
   display: none;
 }
@@ -796,8 +799,85 @@ body.home #page-close {
 .cam-ui {
   pointer-events: auto;
 }
+.cam-fader-holder:after {
+  content: "";
+  position: absolute;
+  border: solid #000;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.cam-fader-holder:before {
+  content: "";
+  position: absolute;
+  border: solid #000;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
 .cam-fader {
+  position: relative;
   width: 100%;
+  height: $border-width;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: #000;
+  border-radius: 0;
+  cursor: pointer;
+}
+.cam-fader::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  border: 0;
+  border-radius: 0;
+  height: 0;
+  width: 100%;
+  background: none;
+}
+.cam-fader::-moz-range-track {
+  -moz-appearance: none;
+  border: 0;
+  border-radius: 0;
+  height: 0;
+  width: 100%;
+  background: none;
+}
+.cam-fader:focus {
+  outline: none;
+}
+.cam-fader::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: solid #000;
+  background: transparent;
+}
+.cam-fader::-moz-range-track {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  opacity: 0;
+  width: 100%;
+}
+.cam-fader::-moz-range-track:focus {
+  outline: none;
+}
+.cam-fader::-moz-range-thumb {
+  border: solid #000;
+  background: transparent;
+  cursor: grab;
+  border-radius: 0;
+}
+.cam-fader::-moz-range-thumb:active {
+  cursor: grabbing;
+}
+.cam-fader:-moz-focusring {
+  outline: none;
+}
+.cam-fader::-moz-focus-outer {
+  border: 0;
+}
+.cam-buttons {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.cam-button {
+  border: solid #000;
 }
 .page-content {
   display: none;
@@ -1071,9 +1151,54 @@ html,
 .project-list {
   margin-left: 49px;
 }
+.cam-fader-holder:after {
+  top: 20px;
+  left: -20px;
+  width: 20px;
+  height: 20px;
+  border-width: 5px 5px 0 0;
+}
+.cam-fader-holder:before {
+  top: 20px;
+  right: -20px;
+  width: 20px;
+  height: 20px;
+  border-width: 0 0 5px 5px;
+}
+.cam-fader {
+  height: 5px;
+}
+.cam-fader::-webkit-slider-thumb {
+  border-width: 5px;
+  width: 16px;
+  height: 30px;
+  margin-top: -7px;
+}
+.cam-fader::-moz-range-thumb {
+  border-width: 5px;
+  width: 10px;
+  height: 30px;
+  margin-top: -7px;
+}
 .cam-buttons {
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
+}
+.cam-button {
+  width: 20px;
+  height: 20px;
+}
+#cam-button-up {
+  border-width: 5px 0 0 5px;
+}
+#cam-button-right {
+  border-width: 5px 5px 0 0;
+}
+#cam-button-down {
+  border-width: 0 5px 5px 0;
+}
+#cam-button-left {
+  border-width: 0 0 5px 5px;
 }
 @media screen and (min-width: 720px) {
   .margin-top-micro {
@@ -1350,9 +1475,54 @@ html,
     -moz-column-gap: 21px;
     column-gap: 21px;
   }
+  .cam-fader-holder:after {
+    top: 25px;
+    left: -25px;
+    width: 25px;
+    height: 25px;
+    border-width: 6px 6px 0 0;
+  }
+  .cam-fader-holder:before {
+    top: 25px;
+    right: -25px;
+    width: 25px;
+    height: 25px;
+    border-width: 0 0 6px 6px;
+  }
+  .cam-fader {
+    height: 6px;
+  }
+  .cam-fader::-webkit-slider-thumb {
+    border-width: 6px;
+    width: 20px;
+    height: 37.5px;
+    margin-top: -7px;
+  }
+  .cam-fader::-moz-range-thumb {
+    border-width: 6px;
+    width: 12.5px;
+    height: 37.5px;
+    margin-top: -7px;
+  }
   .cam-buttons {
-    width: 105px;
-    height: 105px;
+    width: 75px;
+    height: 75px;
+  }
+  .cam-button {
+    width: 25px;
+    height: 25px;
+  }
+  #cam-button-up {
+    border-width: 6px 0 0 6px;
+  }
+  #cam-button-right {
+    border-width: 6px 6px 0 0;
+  }
+  #cam-button-down {
+    border-width: 0 6px 6px 0;
+  }
+  #cam-button-left {
+    border-width: 0 0 6px 6px;
   }
   #contact-info {
     font-size: 26px;
@@ -1627,8 +1797,52 @@ html,
     -moz-column-gap: 24px;
     column-gap: 24px;
   }
+  .cam-fader-holder:after {
+    top: 30px;
+    left: -30px;
+    width: 30px;
+    height: 30px;
+    border-width: 7px 7px 0 0;
+  }
+  .cam-fader-holder:before {
+    top: 30px;
+    right: -30px;
+    width: 30px;
+    height: 30px;
+    border-width: 0 0 7px 7px;
+  }
+  .cam-fader {
+    height: 7px;
+  }
+  .cam-fader::-webkit-slider-thumb {
+    border-width: 7px;
+    width: 24px;
+    height: 51px;
+    margin-top: -25px;
+  }
+  .cam-fader::-moz-range-thumb {
+    border-width: 7px;
+    width: 12px;
+    height: 45px;
+  }
   .cam-buttons {
-    width: 120px;
-    height: 120px;
+    width: 90px;
+    height: 90px;
+  }
+  .cam-button {
+    width: 30px;
+    height: 30px;
+  }
+  #cam-button-up {
+    border-width: 7px 0 0 7px;
+  }
+  #cam-button-right {
+    border-width: 7px 7px 0 0;
+  }
+  #cam-button-down {
+    border-width: 0 7px 7px 0;
+  }
+  #cam-button-left {
+    border-width: 0 0 7px 7px;
   }
 }

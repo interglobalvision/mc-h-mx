@@ -2,6 +2,8 @@
 
 // BASIC
 
+$border-width = 7px 
+
 #main-content
   padding-top: $header-height - $margin-small
 
@@ -20,10 +22,52 @@
 
 // ******************************************************
 
-// CAMERA CONTROL
+// CAMERA CONTROL 
 
+$chevron-size = 30px
+
+.cam-fader-holder
+  &:after 
+    top: $chevron-size
+    left: -($chevron-size)
+    width: $chevron-size
+    height: $chevron-size
+    border-width: $border-width $border-width 0 0
+  &:before 
+    top: $chevron-size
+    right: -($chevron-size)
+    width: $chevron-size
+    height: $chevron-size
+    border-width: 0 0 $border-width $border-width 
+
+.cam-fader
+  height: $border-width
+  &::-webkit-slider-thumb
+    border-width: $border-width
+    width: $chevron-size * .8
+    height: $chevron-size * 1.7
+    margin-top: -25px
+  &::-moz-range-thumb
+    border-width: $border-width
+    width: $chevron-size * .4
+    height: $chevron-size * 1.5
+    
 .cam-buttons
-  width: $margin-large
-  height: $margin-large
+  width: $chevron-size * 3
+  height: $chevron-size * 3
+     
+.cam-button
+  width: $chevron-size
+  height: $chevron-size
+  
+#cam-button-up
+  border-width: $border-width 0 0 $border-width
+  
+#cam-button-right
+  border-width: $border-width $border-width 0 0
 
-// ******************************************************
+#cam-button-down
+  border-width: 0 $border-width $border-width 0
+  
+#cam-button-left
+  border-width: 0 0 $border-width $border-width 

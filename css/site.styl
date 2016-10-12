@@ -58,6 +58,8 @@ button
   border: 0
   background: transparent
   appearance: none
+  &:focus
+    outline: none
 
 // ******************************************************
 
@@ -101,9 +103,70 @@ body.home
 
 .cam-ui
   pointer-events: auto
+  
+.cam-fader-holder
+  &:after 
+    content: ""
+    position: absolute 
+    border: solid $color-black
+    transform: rotate(45deg)
+  &:before 
+    content: ""
+    position: absolute 
+    border: solid $color-black
+    transform: rotate(45deg)
 
 .cam-fader
+  position: relative
   width: 100%
+  height: $border-width
+  appearance: none
+  background: $color-black
+  border-radius: 0
+  cursor: pointer
+  &::-webkit-slider-runnable-track
+    -webkit-appearance: none
+    border: 0
+    border-radius: 0
+    height: 0
+    width: 100%
+    background: none
+  &::-moz-range-track
+    -moz-appearance: none
+    border: 0
+    border-radius: 0
+    height: 0
+    width: 100%
+    background: none
+  &:focus 
+    outline: none
+  &::-webkit-slider-thumb
+    -webkit-appearance: none
+    border: solid $color-black
+    background: transparent
+
+  &::-moz-range-track
+    opacity: 0
+    width: 100%
+    &:focus
+      outline: none
+  &::-moz-range-thumb
+    border: solid $color-black
+    background: transparent
+    cursor: grab
+    border-radius: 0
+    &:active
+      cursor: grabbing
+  &:-moz-focusring
+    outline: none
+  &::-moz-focus-outer
+    border: 0
+    
+.cam-buttons 
+  transform: rotate(45deg)
+    
+.cam-button
+  border: solid $color-black
 
 // ******************************************************
 
