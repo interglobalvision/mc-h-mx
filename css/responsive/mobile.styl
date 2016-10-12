@@ -2,11 +2,18 @@
 
 // BASIC
 
-$border-width = 5px
+$border-width = 4px
+$chevron-size = 15px
 
 #main-content
   padding-top: $header-height - $margin-small
-
+  
+#page-close
+  svg 
+    width: $chevron-size * 1.5
+    path
+      stroke-width: $border-width * .7
+      
 // ******************************************************
 
 // SINGLE PROJECT
@@ -15,13 +22,23 @@ $border-width = 5px
 .project-content p,
 .project-content .portrait,
 .project-list
-  margin-left: $margin-mid
+  margin-left: 0
+  
+.project-pagination
+  svg
+    width: $chevron-size
+    path
+      stroke-width: $border-width * .7
+  &:first-of-type
+    svg 
+      margin-right: $margin-tiny
+  &:last-of-type
+    svg 
+      margin-left: $margin-tiny
 
 // ******************************************************
 
 // CAMERA CONTROL
-
-$chevron-size = 20px
 
 cam-ui($chevron-size, $border-width)
 
