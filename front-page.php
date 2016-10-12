@@ -30,10 +30,6 @@ if ($projects) {
 <?php
     }
   }
-} else {
-?>
-    <article class="u-alert"><?php _e('Sorry, no posts matched your criteria :{'); ?></article>
-<?php
 } ?>
       </div>
     </div>
