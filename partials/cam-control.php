@@ -1,7 +1,7 @@
 <section id="cam-control">
   <div class="container">
     <div class="grid-row margin-bottom-small">
-      <div class="grid-item item-s-7 grid-column justify-center align-items-start cam-fader-holder no-gutter">
+      <div class="grid-item item-s-7 grid-column justify-center align-items-start cam-fader-holder">
         <input class="cam-ui cam-fader" type="range">
       </div>
       <div class="grid-item item-s-5 grid-row justify-end">
