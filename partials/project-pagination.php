@@ -1,6 +1,10 @@
-<div class="grid-item item-s-6">
-  <?php previous_post_link('<img class="project-nav-arrow" src="' . get_bloginfo('stylesheet_directory') . '/img/dist/nav-left.svg"> %link '); ?>
+<div class="grid-item project-pagination">
+  <?php 
+  $left_arrow = url_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/nav_left.svg');
+  previous_post_link("%link", "$left_arrow %title"); ?>
 </div>
-<div class="grid-item item-s-6 text-align-right">
-  <?php next_post_link('%link <img class="project-nav-arrow" src="' . get_bloginfo('stylesheet_directory') . '/img/dist/nav-right.svg">'); ?>
+<div class="grid-item project-pagination">
+  <?php 
+  $right_arrow = url_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/nav_right.svg');
+  next_post_link("%link", "%title $right_arrow"); ?>
 </div>

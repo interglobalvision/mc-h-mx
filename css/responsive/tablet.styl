@@ -2,12 +2,21 @@
 
 // BASIC
 
+$border-width = 5px 
+$chevron-size = 22px
+
 #main-content
   padding-top: $header-height - $margin-small
+  
+#page-close
+  svg 
+    width: $chevron-size * 1.25
+    path
+      stroke-width: $border-width * .7
 
 // ******************************************************
 
-// SINGLE PROJECT
+// SINGLE PROJECT 
 
 .project-title,
 .project-content p,
@@ -21,14 +30,24 @@
 .project-list
   column-count: 2
   column-gap: $margin-small
+  
+.project-pagination
+  svg 
+    width: $chevron-size
+    path
+      stroke-width: $border-width * .7
+  &:first-of-type
+    svg 
+      margin-right: $margin-tiny
+  &:last-of-type
+    svg 
+      margin-left: $margin-tiny
 
 // ******************************************************
 
-// CAMERA CONTROL
+// CAMERA CONTROL 
 
-.cam-buttons
-  width: $margin-large
-  height: $margin-large
+cam-ui($chevron-size, $border-width)
 
 // ******************************************************
 
