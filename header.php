@@ -36,7 +36,7 @@
         <div class="grid-item item-s-2 text-align-right">
           <?php
             if (!is_home()) { ?>
-          <a id="page-close" href="<?php echo home_url(); ?>">
+          <a id="page-close" class="u-inline-block" href="<?php echo home_url(); ?>">
             <?php echo url_get_contents(get_bloginfo('stylesheet_directory') . '/img/dist/close.svg'); ?>
           </a>
           <?php
