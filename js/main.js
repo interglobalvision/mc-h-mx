@@ -78,8 +78,10 @@ Site.Camera = {
       baseUrl = 'http://192.168.1.70/api/';
     }
 
-    $('.cam-button').on('click', function() {
-      command = $(this).attr('data-command');
+    $('.cam-button').on('click', function(event) {
+      event.preventDefault(); 
+      
+      command = $(this).attr('id').split("-")[2];
 
       $.ajax({
         method: "POST",
