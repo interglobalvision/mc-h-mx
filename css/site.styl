@@ -25,6 +25,12 @@ normalize()
 
 // ******************************************************
 
+// CAM UI MIXIN
+
+@import 'camui'
+
+// ******************************************************
+
 // VARIABLES
 
 $color-black = rgb(0, 0, 0)
@@ -128,14 +134,12 @@ body.home
     -webkit-appearance: none
     border: 0
     border-radius: 0
-    height: 0
     width: 100%
     background: none
   &::-moz-range-track
     -moz-appearance: none
     border: 0
     border-radius: 0
-    height: 0
     width: 100%
     background: none
   &:focus 
@@ -144,7 +148,7 @@ body.home
     -webkit-appearance: none
     border: solid $color-black
     background: transparent
-
+    margin-top: 0
   &::-moz-range-track
     opacity: 0
     width: 100%
