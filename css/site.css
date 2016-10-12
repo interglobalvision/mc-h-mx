@@ -1215,14 +1215,14 @@ html,
 }
 .cam-fader-holder:after {
   top: 15px;
-  left: -9.75px;
+  left: -9px;
   width: 15px;
   height: 15px;
   border-width: 4px 4px 0 0;
 }
 .cam-fader-holder:before {
   top: 15px;
-  right: -9.75px;
+  right: -9px;
   width: 15px;
   height: 15px;
   border-width: 0 0 4px 4px;
@@ -1567,14 +1567,14 @@ html,
   }
   .cam-fader-holder:after {
     top: 22px;
-    left: -14.3px;
+    left: -13.2px;
     width: 22px;
     height: 22px;
     border-width: 5px 5px 0 0;
   }
   .cam-fader-holder:before {
     top: 22px;
-    right: -14.3px;
+    right: -13.2px;
     width: 22px;
     height: 22px;
     border-width: 0 0 5px 5px;
@@ -1917,14 +1917,14 @@ html,
   }
   .cam-fader-holder:after {
     top: 30px;
-    left: -19.5px;
+    left: -18px;
     width: 30px;
     height: 30px;
     border-width: 6px 6px 0 0;
   }
   .cam-fader-holder:before {
     top: 30px;
-    right: -19.5px;
+    right: -18px;
     width: 30px;
     height: 30px;
     border-width: 0 0 6px 6px;
