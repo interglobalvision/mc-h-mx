@@ -1,6 +1,5 @@
 <?php 
 $projects = get_post_meta($post->ID, '_igv_home_projects', true); 
-pr($projects);
 ?>
 <section id="cam-control">
   <div class="container">
