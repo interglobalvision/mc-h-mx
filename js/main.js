@@ -1,5 +1,5 @@
 /* jshint browser: true, devel: true, indent: 2, curly: true, eqeqeq: true, futurehostile: true, latedef: true, undef: true, unused: true */
-/* global $, jQuery, document, Site, Cookies */
+/* global $, document, Site, Cookies */
 
 Site = {
   mobileThreshold: 601,
@@ -64,7 +64,7 @@ Site.Camera = {
   isLocalHost: function() {
     var _this = this;
 
-    if (location.hostname === 'localhost' || _this.getUrlParameter('isLocal')) {
+    if (_this.getUrlParameter('isLocal')) {
       _this.isLocal = true;
 
       _this.setLocalStyles();
@@ -89,52 +89,99 @@ Site.Camera = {
         easing: 'linear',
         step: function(val) {
           _this.$fader.val(val);
-          _this.setOpacitiesFromFader(val);
+          _this.setStyleFromFader(val);
         }
     });
   },
 
   bindButtons: function() {
-    var _this = this;
-    var command;
-    var baseUrl = 'http://estudioherrera.servehttp.com/api/';
+    var _this = this,
+      command;
+
+    $('.cam-button').on('click', function(event) {
+      event.preventDefault();
+      command = $(this).data('action');
+      _this.moveCamera(command);
+    });
+
+    $(document).keydown(function(event) {
+      if (event.keyCode >= 37 && event.keyCode <= 40) {
+        switch (event.keyCode) {
+          case 37:
+            command = 'left';
+            break;
+          case 38:
+            command = 'up';
+            break;
+          case 39:
+            command = 'right';
+            break;
+          case 40:
+            command = 'down';
+            break;
+        }
+
+        _this.moveCamera(command);
+      }
+    });
+  },
+
+  moveCamera: function(command) {
+    var _this = this,
+      baseUrl = 'http://estudioherrera.servehttp.com/api/';
 
     if (_this.isLocal) {
       baseUrl = 'http://192.168.1.70/api/';
     }
 
-    $('.cam-button').on('click', function(event) {
-      event.preventDefault(); 
-      
-      command = $(this).attr('id').split("-")[2];
-
-      $.ajax({
-        method: 'POST',
-        url: baseUrl + command,
-      }).done(function( response ) {
-        console.log(response);
-      });
+    $.ajax({
+      method: 'POST',
+      url: baseUrl + command,
+    }).done(function( response ) {
+      console.log(response);
     });
   },
 
   bindFader: function() {
-    var _this = this;
+    var _this = this,
+      faderValue;
 
     _this.$fader.on('input', function() {
-      var faderValue = $(this).val();
-
+      faderValue = $(this).val();
       Cookies.set('faderValue', faderValue);
-      _this.setOpacitiesFromFader(faderValue);
+      _this.setStyleFromFader(faderValue);
+    });
+
+    $(document).keydown(function(event) {
+      if (event.keyCode >= 49 && event.keyCode <= 57) {
+        faderValue = ((event.keyCode - 48) * 10);
+        _this.$fader.val(faderValue);
+        Cookies.set('faderValue', faderValue);
+        _this.setStyleFromFader(faderValue);
+      }
     });
   },
 
-  setOpacitiesFromFader: function(faderValue) {
+  setStyleFromFader: function(faderValue) {
     var _this = this;
-    var projectOpacity = faderValue > 50 ? (100 - faderValue) * .02 : 100;
-    var camOpacity = faderValue < 51 ? faderValue * .02 : 100;
+    var projectOpacity = faderValue > 50 ? (100 - faderValue) * 0.02 : 100;
+    var camOpacity = faderValue < 51 ? faderValue * 0.02 : 100;
 
     _this.$cameraFeed.css('opacity', camOpacity);
     _this.$projectThumbs.css('opacity', projectOpacity);
+
+    // Zoom out
+    if (faderValue < 51) {
+      var zoomPercent = faderValue / 50;
+      var faderEase = _this.easeInOutQuad(zoomPercent);
+      var camZoom = 1.05 - (faderEase * 0.05);
+
+      _this.$cameraFeed.css('transform', 'scale(' + camZoom + ')');
+    }
+  },
+
+  easeInOutQuad: function(t) {
+    return t<0.5 ? 2*t*t : -1+(4-2*t)*t;
   },
 
   getUrlParameter: function(sParam) {

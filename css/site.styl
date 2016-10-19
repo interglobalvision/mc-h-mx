@@ -129,6 +129,13 @@ body.home
     position: absolute 
     border: solid $color-black
     transform: rotate(45deg)
+  &.hide-fader 
+    .cam-fader
+      display: none 
+      visibility: hidden
+      pointer-events: none
+    &:after, &:before
+      border: 0
 
 .cam-fader
   position: relative
