@@ -64,7 +64,7 @@ Site.Camera = {
   isLocalHost: function() {
     var _this = this;
 
-    if (location.hostname === 'localhost' || _this.getUrlParameter('isLocal')) {
+    if (_this.getUrlParameter('isLocal')) {
       _this.isLocal = true;
 
       _this.setLocalStyles();
@@ -95,25 +95,56 @@ Site.Camera = {
   },
 
   bindButtons: function() {
-    var _this = this;
-    var command;
-    var baseUrl = 'http://estudioherrera.servehttp.com/api/';
+    var _this = this,
+      command;
+    
+    $('.cam-button').on('click', function(event) {
+      event.preventDefault(); 
+
+      command = $(this).attr('id').split("-")[2]
+      
+      _this.moveCamera(command);
+    });
+
+    // event.keyCode is deprecated but event.key is still not fully supported
+    //
+    $(document).keydown(function(event) {
+      if (event.key) {
+        command = event.key.slice(5).toLowerCase();
+      } else { 
+        switch (event.keyCode) {
+          case 37:
+            command = 'left';
+            break;
+          case 38:
+            command = 'up';
+            break;
+          case 39:
+            command = 'right';
+            break;
+          case 40:
+            command = 'down';
+            break;
+        }
+      }
+
+      _this.moveCamera(command);
+    });
+  },
+
+  moveCamera: function(command) {
+    var _this = this,
+      baseUrl = 'http://estudioherrera.servehttp.com/api/';
 
     if (_this.isLocal) {
       baseUrl = 'http://192.168.1.70/api/';
     }
 
-    $('.cam-button').on('click', function(event) {
-      event.preventDefault(); 
-      
-      command = $(this).attr('id').split("-")[2];
-
-      $.ajax({
-        method: 'POST',
-        url: baseUrl + command,
-      }).done(function( response ) {
-        console.log(response);
-      });
+    $.ajax({
+      method: 'POST',
+      url: baseUrl + command,
+    }).done(function( response ) {
+      console.log(response);
     });
   },
 
