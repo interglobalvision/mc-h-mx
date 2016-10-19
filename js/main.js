@@ -1,5 +1,5 @@
 /* jshint browser: true, devel: true, indent: 2, curly: true, eqeqeq: true, futurehostile: true, latedef: true, undef: true, unused: true */
-/* global $, jQuery, document, Site, Cookies */
+/* global $, document, Site, Cookies */
 
 Site = {
   mobileThreshold: 601,
@@ -164,8 +164,8 @@ Site.Camera = {
 
   setStyleFromFader: function(faderValue) {
     var _this = this;
-    var projectOpacity = faderValue > 50 ? (100 - faderValue) * .02 : 100;
-    var camOpacity = faderValue < 51 ? faderValue * .02 : 100;
+    var projectOpacity = faderValue > 50 ? (100 - faderValue) * 0.02 : 100;
+    var camOpacity = faderValue < 51 ? faderValue * 0.02 : 100;
 
     _this.$cameraFeed.css('opacity', camOpacity);
     _this.$projectThumbs.css('opacity', projectOpacity);
@@ -174,14 +174,14 @@ Site.Camera = {
     if (faderValue < 51) {
       var zoomPercent = faderValue / 50;
       var faderEase = _this.easeInOutQuad(zoomPercent);
-      var camZoom = 1.05 - (faderEase * .05);
+      var camZoom = 1.05 - (faderEase * 0.05);
 
       _this.$cameraFeed.css('transform', 'scale(' + camZoom + ')');
     }
   },
 
   easeInOutQuad: function(t) {
-    return t<.5 ? 2*t*t : -1+(4-2*t)*t;
+    return t<0.5 ? 2*t*t : -1+(4-2*t)*t;
   },
 
   getUrlParameter: function(sParam) {
