@@ -77,7 +77,7 @@ Site.Camera = {
   setLocalStyles: function() {
     var _this = this;
 
-    _this.$cameraFeed.css('background-image', 'url(http://192.168.1.70)');
+    _this.$cameraFeed.css('background-image', 'url(http://mch.local)');
   },
 
   setFromCookie: function() {
@@ -100,7 +100,7 @@ Site.Camera = {
     var baseUrl = 'http://estudioherrera.servehttp.com/api/';
 
     if (_this.isLocal) {
-      baseUrl = 'http://192.168.1.70/api/';
+      baseUrl = 'http://mch.local/api/';
     }
 
     $('.cam-button').on('click', function(event) {
