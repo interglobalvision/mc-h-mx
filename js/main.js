@@ -89,7 +89,7 @@ Site.Camera = {
         easing: 'linear',
         step: function(val) {
           _this.$fader.val(val);
-          _this.setOpacitiesFromFader(val);
+          _this.setStyleFromFader(val);
         }
     });
   },
@@ -151,7 +151,7 @@ Site.Camera = {
     _this.$fader.on('input', function() {
       faderValue = $(this).val();
       Cookies.set('faderValue', faderValue);
-      _this.setOpacitiesFromFader(faderValue);
+      _this.setStyleFromFader(faderValue);
     });
 
     $(document).keydown(function(event) {
@@ -159,18 +159,31 @@ Site.Camera = {
         faderValue = ((event.keyCode - 48) * 10);
         _this.$fader.val(faderValue);
         Cookies.set('faderValue', faderValue);
-        _this.setOpacitiesFromFader(faderValue);
+        _this.setStyleFromFader(faderValue);
       }
     });
   },
 
-  setOpacitiesFromFader: function(faderValue) {
+  setStyleFromFader: function(faderValue) {
     var _this = this;
     var projectOpacity = faderValue > 50 ? (100 - faderValue) * .02 : 100;
     var camOpacity = faderValue < 51 ? faderValue * .02 : 100;
 
     _this.$cameraFeed.css('opacity', camOpacity);
     _this.$projectThumbs.css('opacity', projectOpacity);
+
+    // Zoom out
+    if (faderValue < 51) {
+      var zoomPercent = faderValue / 50;
+      var faderEase = _this.easeInOutQuad(zoomPercent);
+      var camZoom = 1.05 - (faderEase * .05);
+
+      _this.$cameraFeed.css('transform', 'scale(' + camZoom + ')');
+    }
+  },
+
+  easeInOutQuad: function(t) {
+    return t<.5 ? 2*t*t : -1+(4-2*t)*t;
   },
 
   getUrlParameter: function(sParam) {
