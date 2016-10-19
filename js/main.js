@@ -106,12 +106,8 @@ Site.Camera = {
       _this.moveCamera(command);
     });
 
-    // event.keyCode is deprecated but event.key is still not fully supported
-    //
     $(document).keydown(function(event) {
-      if (event.key) {
-        command = event.key.slice(5).toLowerCase();
-      } else { 
+      if (event.keyCode >= 37 && event.keyCode <= 40) {
         switch (event.keyCode) {
           case 37:
             command = 'left';
@@ -126,9 +122,9 @@ Site.Camera = {
             command = 'down';
             break;
         }
-      }
 
-      _this.moveCamera(command);
+        _this.moveCamera(command);
+      }
     });
   },
 
@@ -149,13 +145,22 @@ Site.Camera = {
   },
 
   bindFader: function() {
-    var _this = this;
+    var _this = this,
+      faderValue;
 
     _this.$fader.on('input', function() {
-      var faderValue = $(this).val();
-
+      faderValue = $(this).val();
       Cookies.set('faderValue', faderValue);
       _this.setOpacitiesFromFader(faderValue);
+    });
+
+    $(document).keydown(function(event) {
+      if (event.keyCode >= 49 && event.keyCode <= 57) {
+        faderValue = ((event.keyCode - 48) * 10);
+        _this.$fader.val(faderValue);
+        Cookies.set('faderValue', faderValue);
+        _this.setOpacitiesFromFader(faderValue);
+      }
     });
   },
 
