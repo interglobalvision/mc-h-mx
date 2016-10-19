@@ -97,12 +97,10 @@ Site.Camera = {
   bindButtons: function() {
     var _this = this,
       command;
-    
-    $('.cam-button').on('click', function(event) {
-      event.preventDefault(); 
 
-      command = $(this).attr('id').split("-")[2]
-      
+    $('.cam-button').on('click', function(event) {
+      event.preventDefault();
+      command = $(this).data('action');
       _this.moveCamera(command);
     });
 
