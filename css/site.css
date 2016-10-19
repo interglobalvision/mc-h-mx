@@ -845,6 +845,15 @@ body.home #page-close {
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+.cam-fader-holder.hide-fader .cam-fader {
+  display: none;
+  visibility: hidden;
+  pointer-events: none;
+}
+.cam-fader-holder.hide-fader:after,
+.cam-fader-holder.hide-fader:before {
+  border: 0;
+}
 .cam-fader {
   position: relative;
   width: 100%;

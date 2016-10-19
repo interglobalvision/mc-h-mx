@@ -1,7 +1,11 @@
+<?php 
+$projects = get_post_meta($post->ID, '_igv_home_projects', true); 
+pr($projects);
+?>
 <section id="cam-control">
   <div class="container">
     <div class="grid-row margin-bottom-small">
-      <div class="grid-item item-s-7 grid-column justify-center align-items-start cam-fader-holder">
+      <div class="grid-item item-s-7 grid-column justify-center align-items-start cam-fader-holder <?php echo empty($projects[0]['id']) ? 'hide-fader' : ''; ?>">
         <input class="cam-ui cam-fader" type="range">
       </div>
       <div class="grid-item item-s-5 grid-row justify-end">
