@@ -53,7 +53,6 @@ Site.Camera = {
     _this.$projectThumbs = $('.home-project-item');
 
     _this.isLocalHost();
-    _this.bindButtons();
     _this.bindFader();
 
     if (Cookies.get('faderValue')) {
