@@ -93,54 +93,6 @@ Site.Camera = {
     });
   },
 
-  bindButtons: function() {
-    var _this = this,
-      command;
-
-    $('.cam-button').on('click', function(event) {
-      event.preventDefault();
-      command = $(this).data('action');
-      _this.moveCamera(command);
-    });
-
-    $(document).keydown(function(event) {
-      if (event.keyCode >= 37 && event.keyCode <= 40) {
-        switch (event.keyCode) {
-          case 37:
-            command = 'left';
-            break;
-          case 38:
-            command = 'up';
-            break;
-          case 39:
-            command = 'right';
-            break;
-          case 40:
-            command = 'down';
-            break;
-        }
-
-        _this.moveCamera(command);
-      }
-    });
-  },
-
-  moveCamera: function(command) {
-    var _this = this,
-      baseUrl = 'http://estudioherrera.servehttp.com/api/';
-
-    if (_this.isLocal) {
-      baseUrl = 'http://192.168.1.70/api/';
-    }
-
-    $.ajax({
-      method: 'POST',
-      url: baseUrl + command,
-    }).done(function( response ) {
-      console.log(response);
-    });
-  },
-
   bindFader: function() {
     var _this = this,
       faderValue;
