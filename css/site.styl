@@ -86,13 +86,14 @@ body.home
   background-position: center
   background-size: cover
   pointer-events: none
+  filter: blur(1px) contrast(105%) saturate(105%)
 
 // ******************************************************
 
 // PROJECT SINGLE
 
 .project-pagination
-  a 
+  a
     display: flex
     flex-direction: row
     align-items: center
@@ -117,21 +118,21 @@ body.home
 
 .cam-ui
   pointer-events: auto
-  
+
 .cam-fader-holder
-  &:after 
+  &:after
     content: ""
-    position: absolute 
+    position: absolute
     border: solid $color-black
     transform: rotate(45deg)
-  &:before 
+  &:before
     content: ""
-    position: absolute 
+    position: absolute
     border: solid $color-black
     transform: rotate(45deg)
-  &.hide-fader 
+  &.hide-fader
     .cam-fader
-      display: none 
+      display: none
       visibility: hidden
       pointer-events: none
     &:after, &:before
@@ -157,7 +158,7 @@ body.home
     border-radius: 0
     width: 100%
     background: none
-  &:focus 
+  &:focus
     outline: none
   &::-webkit-slider-thumb
     -webkit-appearance: none
