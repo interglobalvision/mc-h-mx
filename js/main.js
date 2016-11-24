@@ -76,7 +76,7 @@ Site.Camera = {
   setLocalStyles: function() {
     var _this = this;
 
-    _this.$cameraFeed.css('background-image', 'url(http://192.168.1.70)');
+    _this.$cameraFeed.css('background-image', 'url(http://mch.local)');
   },
 
   setFromCookie: function() {
