@@ -26,7 +26,7 @@ if ($projects) {
         $check_filetype = wp_check_filetype($project['image']);
 
         if ($check_filetype['ext'] == 'gif') { 
-          $img_elem = '<img src="' . $project['image'] . '">';
+          $img_elem = '<img src="' . $project['image'] . '" style="max-width: ' . $percent_width . '">';
         } else {
           $img_elem = wp_get_attachment_image( $project['image_id'], 'gallery', false, array('style' => 'max-width: ' . $percent_width) ); 
         }
