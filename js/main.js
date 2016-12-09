@@ -49,11 +49,14 @@ Site.Camera = {
     var _this = this;
 
     _this.$cameraFeed = $('.cam-feed');
-    _this.$fader = $('.cam-fader');
+    _this.$xfader = $('#xfader');
+    _this.$zoomfader = $('#zoomfader');
     _this.$projectThumbs = $('.home-project-item');
 
+    _this.zoomed = false;
+
     _this.isLocalHost();
-    _this.bindFader();
+    _this.bind();
 
     if (Cookies.get('faderValue')) {
       _this.setFromCookie();
@@ -87,48 +90,93 @@ Site.Camera = {
         duration: 100,
         easing: 'linear',
         step: function(val) {
-          _this.$fader.val(val);
+          _this.$xfader.val(val);
           _this.setStyleFromFader(val);
         }
     });
   },
 
-  bindFader: function() {
-    var _this = this,
-      faderValue;
+  bind: function() {
+    var _this = this;
 
-    _this.$fader.on('input', function() {
-      faderValue = $(this).val();
-      Cookies.set('faderValue', faderValue);
+    // Bind crossfader
+    _this.$xfader.on('input', function() {
+      var faderValue = $(this).val();
       _this.setStyleFromFader(faderValue);
     });
 
+
+    // Bind zoomfader
+    _this.$zoomfader.on('input', function() {
+      var faderValue = parseInt($(this).val());
+      _this.setZoom(faderValue);
+    });
+
+    // Bind pointer position
+    $(document).mousemove(function(e) {
+      var valX = e.pageX / window.innerWidth;
+      var valY = (e.pageY - window.pageYOffset) / window.innerHeight;
+
+      _this.setLocation(valX,valY);
+
+    });
+
+    // Bind keyboard shortcuts
     $(document).keydown(function(event) {
       if (event.keyCode >= 49 && event.keyCode <= 57) {
-        faderValue = ((event.keyCode - 48) * 10);
-        _this.$fader.val(faderValue);
-        Cookies.set('faderValue', faderValue);
+        var faderValue = ((event.keyCode - 48) * 10);
+        _this.$xfader.val(faderValue);
         _this.setStyleFromFader(faderValue);
       }
     });
   },
 
+  setLocation: function(x,y) {
+    var _this = this;
+
+    if(_this.zoomed && !_this.$zoomfader.is(':focus')) {
+      var zoomValue = _this.$zoomfader.val();
+      var zoom = (zoomValue * 0.01) + 1;
+
+      var range =  1 - 1 / zoom;
+
+      var posX = ((x * range) - (range / 2)) * 100;
+      var posY = ((y * range) - (range / 2)) * 100;
+
+
+      _this.$cameraFeed.css('transform', 'scale(' + zoom + ') translate(' + posX + '%, ' + posY + '%)');
+    }
+  },
+
   setStyleFromFader: function(faderValue) {
     var _this = this;
+
     var projectOpacity = faderValue > 50 ? (100 - faderValue) * 0.02 : 100;
     var camOpacity = faderValue < 51 ? faderValue * 0.02 : 100;
 
     _this.$cameraFeed.css('opacity', camOpacity);
     _this.$projectThumbs.css('opacity', projectOpacity);
 
-    // Zoom out
-    if (faderValue < 51) {
-      var zoomPercent = faderValue / 50;
-      var faderEase = _this.easeInOutQuad(zoomPercent);
-      var camZoom = 1.05 - (faderEase * 0.05);
+    Cookies.set('faderValue', faderValue);
+  },
 
-      _this.$cameraFeed.css('transform', 'scale(' + camZoom + ')');
+  setZoom: function(value) {
+    var _this = this;
+
+    var zoom = (value * 0.01) + 1;
+
+    _this.$cameraFeed.css('transform', 'scale(' + zoom + ')');
+
+    if (value > 0) {
+      _this.zoomed = true;
+    } else {
+      _this.zoomed = false;
     }
+
+    setTimeout( function() {
+      _this.$zoomfader.blur();
+    }, 700);
+
   },
 
   easeInOutQuad: function(t) {
