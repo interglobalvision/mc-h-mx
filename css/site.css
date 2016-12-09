@@ -793,9 +793,6 @@ body.home #page-close {
   background-position: center;
   background-size: cover;
   pointer-events: none;
-  -webkit-transform: scale(1.2, 1.2);
-  -ms-transform: scale(1.2, 1.2);
-  transform: scale(1.2, 1.2);
   -webkit-filter: contrast(105%) saturate(105%);
           filter: contrast(105%) saturate(105%);
 }
