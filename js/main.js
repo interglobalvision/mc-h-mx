@@ -59,7 +59,9 @@ Site.Camera = {
     _this.bind();
 
     if (Cookies.get('faderValue')) {
-      _this.setFromCookie();
+      _this.animateFader(Cookies.get('faderValue'));
+    } else {
+      _this.animateFader(100);
     }
   },
 
@@ -82,16 +84,15 @@ Site.Camera = {
     _this.$cameraFeed.css('background-image', 'url(http://mch.local)');
   },
 
-  setFromCookie: function() {
+  animateFader: function(value) {
     var _this = this;
-    var faderValueFromCookie = Cookies.get('faderValue');
 
-    $({ val: 50 }).animate({ val: faderValueFromCookie }, {
-        duration: 100,
+    $({ val: 50 }).animate({ val: value }, {
+        duration: 300,
         easing: 'linear',
         step: function(val) {
           _this.$xfader.val(val);
-          _this.setStyleFromFader(val);
+          _this.setOpacity(val);
         }
     });
   },
@@ -102,7 +103,7 @@ Site.Camera = {
     // Bind crossfader
     _this.$xfader.on('input', function() {
       var faderValue = $(this).val();
-      _this.setStyleFromFader(faderValue);
+      _this.setOpacity(faderValue);
     });
 
 
@@ -126,7 +127,7 @@ Site.Camera = {
       if (event.keyCode >= 49 && event.keyCode <= 57) {
         var faderValue = ((event.keyCode - 48) * 10);
         _this.$xfader.val(faderValue);
-        _this.setStyleFromFader(faderValue);
+        _this.setOpacity(faderValue);
       }
     });
   },
@@ -148,16 +149,16 @@ Site.Camera = {
     }
   },
 
-  setStyleFromFader: function(faderValue) {
+  setOpacity: function(value) {
     var _this = this;
 
-    var projectOpacity = faderValue > 50 ? (100 - faderValue) * 0.02 : 100;
-    var camOpacity = faderValue < 51 ? faderValue * 0.02 : 100;
+    var projectOpacity = value > 50 ? (100 - value) * 0.02 : 100;
+    var camOpacity = value < 51 ? value * 0.02 : 100;
 
     _this.$cameraFeed.css('opacity', camOpacity);
     _this.$projectThumbs.css('opacity', projectOpacity);
 
-    Cookies.set('faderValue', faderValue);
+    Cookies.set('faderValue', value);
   },
 
   setZoom: function(value) {
