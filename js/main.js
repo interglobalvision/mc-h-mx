@@ -111,14 +111,18 @@ Site.Camera = {
     _this.$zoomfader.on('input', function() {
       var faderValue = parseInt($(this).val());
       _this.setZoom(faderValue);
+    }).on('change', function() {
+      _this.zooming = false;
     });
 
     // Bind pointer position
     $(document).mousemove(function(e) {
-      var valX = e.pageX / window.innerWidth;
-      var valY = (e.pageY - window.pageYOffset) / window.innerHeight;
+      if(_this.zoomed && !_this.zooming) {
+        var valX = e.pageX / window.innerWidth;
+        var valY = (e.pageY - window.pageYOffset) / window.innerHeight;
 
-      _this.setLocation(valX,valY);
+        _this.setLocation(valX,valY);
+      }
 
     });
 
@@ -135,18 +139,15 @@ Site.Camera = {
   setLocation: function(x,y) {
     var _this = this;
 
-    if(_this.zoomed && !_this.$zoomfader.is(':focus')) {
-      var zoomValue = _this.$zoomfader.val();
-      var zoom = (zoomValue * 0.01) + 1;
+    var zoomValue = _this.$zoomfader.val();
+    var zoom = (zoomValue * 0.01) + 1;
 
-      var range =  1 - 1 / zoom;
+    var range =  1 - 1 / zoom;
 
-      var posX = ((x * range) - (range / 2)) * 100;
-      var posY = ((y * range) - (range / 2)) * 100;
+    var posX = ((x * range) - (range / 2)) * 100;
+    var posY = ((y * range) - (range / 2)) * 100;
 
-
-      _this.$cameraFeed.css('transform', 'scale(' + zoom + ') translate(' + posX + '%, ' + posY + '%)');
-    }
+    _this.$cameraFeed.css('transform', 'scale(' + zoom + ') translate(' + posX + '%, ' + posY + '%)');
   },
 
   setOpacity: function(value) {
@@ -164,6 +165,8 @@ Site.Camera = {
   setZoom: function(value) {
     var _this = this;
 
+    _this.zooming = true;
+
     var zoom = (value * 0.01) + 1;
 
     _this.$cameraFeed.css('transform', 'scale(' + zoom + ')');
@@ -173,10 +176,6 @@ Site.Camera = {
     } else {
       _this.zoomed = false;
     }
-
-    setTimeout( function() {
-      _this.$zoomfader.blur();
-    }, 700);
 
   },
 
