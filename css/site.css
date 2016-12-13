@@ -783,6 +783,11 @@ body.home #page-close {
 body.home h1 {
   text-shadow: 0 0 10px #fff;
 }
+home-project-item {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
 .cam-feed {
   position: fixed;
   top: 0;
@@ -796,6 +801,9 @@ body.home h1 {
   pointer-events: none;
   -webkit-filter: contrast(105%) saturate(105%);
           filter: contrast(105%) saturate(105%);
+  transition: -webkit-transform 100ms ease-out;
+  transition: transform 100ms ease-out;
+  transition: transform 100ms ease-out, -webkit-transform 100ms ease-out;
 }
 .project-pagination a {
   display: -webkit-flex;
@@ -829,8 +837,16 @@ body.home h1 {
   width: 80%;
   pointer-events: none;
 }
+.cam-control-item {
+  margin-top: 60px;
+}
 .cam-ui {
   pointer-events: auto;
+}
+.cam-fader-holder {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 .cam-fader-holder:after {
   content: "";
@@ -860,7 +876,7 @@ body.home h1 {
 .cam-fader {
   position: relative;
   width: 100%;
-  height: $border-width;
+  height: 4px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;

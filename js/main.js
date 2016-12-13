@@ -48,15 +48,22 @@ Site.Camera = {
   init: function() {
     var _this = this;
 
+    _this.maxZoom = 1.7; // times. eg 2x
+
     _this.$cameraFeed = $('.cam-feed');
-    _this.$fader = $('.cam-fader');
+    _this.$xfader = $('#xfader');
+    _this.$zoomfader = $('#zoomfader');
     _this.$projectThumbs = $('.home-project-item');
 
+    _this.zoomed = false;
+
     _this.isLocalHost();
-    _this.bindFader();
+    _this.bind();
 
     if (Cookies.get('faderValue')) {
-      _this.setFromCookie();
+      _this.animateFader(Cookies.get('faderValue'));
+    } else {
+      _this.animateFader(100);
     }
   },
 
@@ -79,56 +86,99 @@ Site.Camera = {
     _this.$cameraFeed.css('background-image', 'url(http://mch.local)');
   },
 
-  setFromCookie: function() {
+  animateFader: function(value) {
     var _this = this;
-    var faderValueFromCookie = Cookies.get('faderValue');
 
-    $({ val: 50 }).animate({ val: faderValueFromCookie }, {
-        duration: 100,
+    $({ val: 50 }).animate({ val: value }, {
+        duration: 300,
         easing: 'linear',
         step: function(val) {
-          _this.$fader.val(val);
-          _this.setStyleFromFader(val);
+          _this.$xfader.val(val);
+          _this.setOpacity(val);
         }
     });
   },
 
-  bindFader: function() {
-    var _this = this,
-      faderValue;
+  bind: function() {
+    var _this = this;
 
-    _this.$fader.on('input', function() {
-      faderValue = $(this).val();
-      Cookies.set('faderValue', faderValue);
-      _this.setStyleFromFader(faderValue);
+    // Bind crossfader
+    _this.$xfader.on('input', function() {
+      var faderValue = $(this).val();
+      _this.setOpacity(faderValue);
     });
 
+
+    // Bind zoomfader
+    _this.$zoomfader.on('input', function() {
+      var faderValue = parseInt($(this).val());
+      _this.setZoom(faderValue);
+    }).on('change', function() {
+      _this.zooming = false;
+    });
+
+    // Bind pointer position
+    $(document).mousemove(function(e) {
+      if(_this.zoomed && !_this.zooming) {
+        var valX = e.pageX / window.innerWidth;
+        var valY = (e.pageY - window.pageYOffset) / window.innerHeight;
+
+        _this.setLocation(valX,valY);
+      }
+
+    });
+
+    // Bind keyboard shortcuts
     $(document).keydown(function(event) {
       if (event.keyCode >= 49 && event.keyCode <= 57) {
-        faderValue = ((event.keyCode - 48) * 10);
-        _this.$fader.val(faderValue);
-        Cookies.set('faderValue', faderValue);
-        _this.setStyleFromFader(faderValue);
+        var faderValue = ((event.keyCode - 48) * 10);
+        _this.$xfader.val(faderValue);
+        _this.setOpacity(faderValue);
       }
     });
   },
 
-  setStyleFromFader: function(faderValue) {
+  setLocation: function(x,y) {
     var _this = this;
-    var projectOpacity = faderValue > 50 ? (100 - faderValue) * 0.02 : 100;
-    var camOpacity = faderValue < 51 ? faderValue * 0.02 : 100;
+
+    var zoomValue = _this.$zoomfader.val();
+    var zoom = ((zoomValue * 0.01 *(_this.maxZoom - 1) ) + 1);
+
+    var range =  1 - 1 / zoom;
+
+    var posX = ((x * range) - (range / 2)) * 100;
+    var posY = ((y * range) - (range / 2)) * 100;
+
+    _this.$cameraFeed.css('transform', 'scale(' + zoom + ') translate(' + posX + '%, ' + posY + '%)');
+  },
+
+  setOpacity: function(value) {
+    var _this = this;
+
+    var projectOpacity = value > 50 ? (100 - value) * 0.02 : 100;
+    var camOpacity = value < 51 ? value * 0.02 : 100;
 
     _this.$cameraFeed.css('opacity', camOpacity);
     _this.$projectThumbs.css('opacity', projectOpacity);
 
-    // Zoom out
-    if (faderValue < 51) {
-      var zoomPercent = faderValue / 50;
-      var faderEase = _this.easeInOutQuad(zoomPercent);
-      var camZoom = 1.05 - (faderEase * 0.05);
+    Cookies.set('faderValue', value);
+  },
 
-      _this.$cameraFeed.css('transform', 'scale(' + camZoom + ')');
+  setZoom: function(value) {
+    var _this = this;
+
+    _this.zooming = true;
+
+    var zoom = ((value * 0.01 *(_this.maxZoom - 1) ) + 1);
+
+    _this.$cameraFeed.css('transform', 'scale(' + zoom + ')');
+
+    if (value > 0) {
+      _this.zoomed = true;
+    } else {
+      _this.zoomed = false;
     }
+
   },
 
   easeInOutQuad: function(t) {
