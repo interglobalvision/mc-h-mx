@@ -48,6 +48,8 @@ Site.Camera = {
   init: function() {
     var _this = this;
 
+    _this.maxZoom = 1.7; // times. eg 2x
+
     _this.$cameraFeed = $('.cam-feed');
     _this.$xfader = $('#xfader');
     _this.$zoomfader = $('#zoomfader');
@@ -140,7 +142,7 @@ Site.Camera = {
     var _this = this;
 
     var zoomValue = _this.$zoomfader.val();
-    var zoom = (zoomValue * 0.01) + 1;
+    var zoom = ((zoomValue * 0.01 *(_this.maxZoom - 1) ) + 1);
 
     var range =  1 - 1 / zoom;
 
@@ -167,7 +169,7 @@ Site.Camera = {
 
     _this.zooming = true;
 
-    var zoom = (value * 0.01) + 1;
+    var zoom = ((value * 0.01 *(_this.maxZoom - 1) ) + 1);
 
     _this.$cameraFeed.css('transform', 'scale(' + zoom + ')');
 
