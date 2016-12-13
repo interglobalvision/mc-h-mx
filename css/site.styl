@@ -75,6 +75,9 @@ body.home
   #page-close
     display: none
 
+home-project-item
+  opacity: 0
+
 .cam-feed
   position: fixed
   top: 0
@@ -87,6 +90,7 @@ body.home
   background-size: cover
   pointer-events: none
   filter: contrast(105%) saturate(105%)
+  transition: transform 100ms ease-out
 
 // ******************************************************
 
@@ -116,10 +120,14 @@ body.home
   width: 80%
   pointer-events: none
 
+.cam-control-item
+  margin-top: 60px
+
 .cam-ui
   pointer-events: auto
 
 .cam-fader-holder
+  display: flex
   &:after
     content: ""
     position: absolute
@@ -141,7 +149,7 @@ body.home
 .cam-fader
   position: relative
   width: 100%
-  height: $border-width
+  height: 4px
   appearance: none
   background: $color-black
   border-radius: 0
