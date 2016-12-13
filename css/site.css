@@ -780,6 +780,9 @@ button:focus {
 body.home #page-close {
   display: none;
 }
+body.home h1 {
+  text-shadow: 0 0 10px #fff;
+}
 home-project-item {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
@@ -901,7 +904,6 @@ home-project-item {
 .cam-fader::-webkit-slider-thumb {
   -webkit-appearance: none;
   border: solid #000;
-  background: transparent;
   margin-top: 0;
 }
 .cam-fader::-moz-range-track {
