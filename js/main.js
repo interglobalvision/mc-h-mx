@@ -10,7 +10,7 @@ Site = {
       _this.onResize();
     });
 
-    if ($('.cam-feed').length) {
+    if ($('#cam-feed').length) {
       _this.Camera.init();
     }
 
@@ -19,6 +19,7 @@ Site = {
       if ($('.lang-toggle').length) {
         _this.bindLangToggle();
       }
+
     });
 
   },
@@ -50,7 +51,7 @@ Site.Camera = {
 
     _this.maxZoom = 1.7; // times. eg 2x
 
-    _this.$cameraFeed = $('.cam-feed');
+    _this.$cameraFeed = $('#cam-feed');
     _this.$xfader = $('#xfader');
     _this.$zoomfader = $('#zoomfader');
     _this.$projectThumbs = $('.home-project-item');
@@ -135,6 +136,10 @@ Site.Camera = {
         _this.$xfader.val(faderValue);
         _this.setOpacity(faderValue);
       }
+    });
+
+    _this.$cameraFeed.imagesLoaded( { background: true }, function() {
+      $('#cam-feed-loader').remove();
     });
   },
 

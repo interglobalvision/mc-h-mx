@@ -5,7 +5,8 @@ $projects = get_post_meta($post->ID, '_igv_home_projects', true);
 ?>
 
 <main id="main-content">
-  <div class="cam-feed"></div>
+  <div id="cam-feed-loader"></div>
+  <div id="cam-feed"></div>
   <section id="posts">
     <div class="container">
       <div class="grid-row">
@@ -20,15 +21,15 @@ if ($projects) {
 ?>
 
     <article id="post-<?php echo $project['id']; ?>" class="home-project-item text-align-center grid-item item-s-12<?php echo $single_row != 'on' ? ' item-m-6' : false;?>">
-      <div style="margin-top: <?php _e($top_margin); ?>; left: <?php _e($side_margin); ?>;"> 
+      <div style="margin-top: <?php _e($top_margin); ?>; left: <?php _e($side_margin); ?>;">
         <a href="<?php echo get_the_permalink($project['id']) ?>">
-<?php 
+<?php
         $check_filetype = wp_check_filetype($project['image']);
 
-        if ($check_filetype['ext'] == 'gif') { 
+        if ($check_filetype['ext'] == 'gif') {
           $img_elem = '<img src="' . $project['image'] . '" style="max-width: ' . $percent_width . '">';
         } else {
-          $img_elem = wp_get_attachment_image( $project['image_id'], 'gallery', false, array('style' => 'max-width: ' . $percent_width) ); 
+          $img_elem = wp_get_attachment_image( $project['image_id'], 'gallery', false, array('style' => 'max-width: ' . $percent_width) );
         }
         echo $img_elem;
 ?>
