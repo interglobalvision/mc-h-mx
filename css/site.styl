@@ -25,12 +25,6 @@ normalize()
 
 // ******************************************************
 
-// CAM UI MIXIN
-
-@import 'camui'
-
-// ******************************************************
-
 // VARIABLES
 
 $color-black = rgb(0, 0, 0)
@@ -134,12 +128,20 @@ home-project-item
     content: ""
     position: absolute
     border: solid $color-black
-    transform: rotate(45deg)
+    top: -13px
+    left: -18px
+    width: 30px
+    height: 30px
+    border-width: 0 4px 0 0
   &:before
     content: ""
     position: absolute
     border: solid $color-black
-    transform: rotate(45deg)
+    top: -13px
+    right: -18px
+    width: 30px
+    height: 30px
+    border-width: 0 0 0 4px
   &.hide-fader
     .cam-fader
       display: none
@@ -174,6 +176,9 @@ home-project-item
     -webkit-appearance: none
     border: solid $color-black
     margin-top: 0
+    border-width: 4px
+    width: 15px
+    height: 30px
   &::-moz-range-track
     opacity: 0
     width: 100%
@@ -184,6 +189,9 @@ home-project-item
     background: transparent
     cursor: grab
     border-radius: 0
+    border-width: 4px
+    width: 7px
+    height: 22px
     &:active
       cursor: grabbing
   &:-moz-focusring
