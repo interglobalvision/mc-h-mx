@@ -843,9 +843,9 @@ home-project-item {
 #cam-control {
   position: fixed;
   bottom: 0;
-  left: 10%;
+  left: 0;
   z-index: 90;
-  width: 80%;
+  width: 100%;
   pointer-events: none;
 }
 .cam-control-item {
@@ -863,17 +863,21 @@ home-project-item {
   content: "";
   position: absolute;
   border: solid #000;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
+  top: -13px;
+  left: -18px;
+  width: 30px;
+  height: 30px;
+  border-width: 0 4px 0 0;
 }
 .cam-fader-holder:before {
   content: "";
   position: absolute;
   border: solid #000;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
+  top: -13px;
+  right: -18px;
+  width: 30px;
+  height: 30px;
+  border-width: 0 0 0 4px;
 }
 .cam-fader-holder.hide-fader .cam-fader {
   display: none;
@@ -916,6 +920,9 @@ home-project-item {
   -webkit-appearance: none;
   border: solid #000;
   margin-top: 0;
+  border-width: 4px;
+  width: 15px;
+  height: 30px;
 }
 .cam-fader::-moz-range-track {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
@@ -931,6 +938,9 @@ home-project-item {
   background: transparent;
   cursor: grab;
   border-radius: 0;
+  border-width: 4px;
+  width: 7px;
+  height: 22px;
 }
 .cam-fader::-moz-range-thumb:active {
   cursor: grabbing;
@@ -1243,33 +1253,6 @@ html,
 .project-pagination:last-of-type svg {
   margin-left: 7px;
 }
-.cam-fader-holder:after {
-  top: -6px;
-  left: -9px;
-  width: 15px;
-  height: 15px;
-  border-width: 4px 4px 0 0;
-}
-.cam-fader-holder:before {
-  top: -6px;
-  right: -9px;
-  width: 15px;
-  height: 15px;
-  border-width: 0 0 4px 4px;
-}
-.cam-fader {
-  height: 4px;
-}
-.cam-fader::-webkit-slider-thumb {
-  border-width: 4px;
-  width: 12.75px;
-  height: 29.25px;
-}
-.cam-fader::-moz-range-thumb {
-  border-width: 4px;
-  width: 6px;
-  height: 22.5px;
-}
 @media screen and (min-width: 720px) {
   .margin-top-micro {
     margin-top: 7px;
@@ -1575,33 +1558,6 @@ html,
   .project-pagination:last-of-type svg {
     margin-left: 10.5px;
   }
-  .cam-fader-holder:after {
-    top: -8.799999999999999px;
-    left: -13.2px;
-    width: 22px;
-    height: 22px;
-    border-width: 5px 5px 0 0;
-  }
-  .cam-fader-holder:before {
-    top: -8.799999999999999px;
-    right: -13.2px;
-    width: 22px;
-    height: 22px;
-    border-width: 0 0 5px 5px;
-  }
-  .cam-fader {
-    height: 5px;
-  }
-  .cam-fader::-webkit-slider-thumb {
-    border-width: 5px;
-    width: 18.7px;
-    height: 42.9px;
-  }
-  .cam-fader::-moz-range-thumb {
-    border-width: 5px;
-    width: 8.8px;
-    height: 33px;
-  }
   #contact-info {
     font-size: 26px;
   }
@@ -1904,32 +1860,5 @@ html,
   }
   .project-pagination:last-of-type svg {
     margin-left: 12px;
-  }
-  .cam-fader-holder:after {
-    top: -12px;
-    left: -18px;
-    width: 30px;
-    height: 30px;
-    border-width: 6px 6px 0 0;
-  }
-  .cam-fader-holder:before {
-    top: -12px;
-    right: -18px;
-    width: 30px;
-    height: 30px;
-    border-width: 0 0 6px 6px;
-  }
-  .cam-fader {
-    height: 6px;
-  }
-  .cam-fader::-webkit-slider-thumb {
-    border-width: 6px;
-    width: 25.5px;
-    height: 58.5px;
-  }
-  .cam-fader::-moz-range-thumb {
-    border-width: 6px;
-    width: 12px;
-    height: 45px;
   }
 }
