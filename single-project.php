@@ -21,10 +21,6 @@ if( have_posts() ) {
 
       </article>
 
-      <div class="grid-row font-size-large margin-top-mid">
-        <?php get_template_part('partials/project-list'); ?>
-      </div>
-
       <div class="grid-row font-size-large margin-top-mid margin-bottom-basic justify-between">
         <?php get_template_part('partials/project-pagination'); ?>
       </div>
