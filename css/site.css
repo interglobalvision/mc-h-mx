@@ -840,6 +840,9 @@ home-project-item {
   -ms-flex-pack: end;
       justify-content: flex-end;
 }
+.stellar-item {
+  position: relative;
+}
 #cam-control {
   position: fixed;
   bottom: 0;
