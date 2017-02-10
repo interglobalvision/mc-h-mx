@@ -14,6 +14,8 @@ Site = {
       _this.Camera.init();
     }
 
+    Site.Parallax.init();
+
     $(document).ready(function () {
 
       if ($('.lang-toggle').length) {
@@ -42,6 +44,19 @@ Site = {
     $('.lang-toggle').bind('click', function() {
       $('.page-content').toggleClass('active');
     });
+  },
+};
+
+Site.Parallax = {
+  init: function() {
+
+    $.stellar({
+      horizontalScrolling: false,
+      horizontalOffset: 0,
+      positionProperty: 'transform',
+      hideDistantElements: false,
+    });
+
   },
 };
 
