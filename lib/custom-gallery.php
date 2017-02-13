@@ -40,6 +40,7 @@ function my_gallery_shortcode($attr) {
     'id'         => $post ? $post->ID : 0,
     'include'    => '',
     'exclude'    => '',
+    'captiontag' => 'div',
   ), $attr, 'gallery' );
 
   $id = intval( $atts['id'] );
@@ -69,13 +70,21 @@ function my_gallery_shortcode($attr) {
   foreach ( $attachments as $id => $attachment ) {
 
     $image_meta  = wp_get_attachment_metadata( $id );
+    $image_src = wp_get_attachment_image_src($id, 'full');
 
     $orientation = '';
+
     if ( isset( $image_meta['height'], $image_meta['width'] ) ) {
       $orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
     }
 
-    $image_output = wp_get_attachment_image( $id, 'item-l-9-16x9', false, $attr );
+    $check_filetype = wp_check_filetype($image_src[0]);
+
+    if ($check_filetype['ext'] == 'gif') {
+      $image_output = '<img src="' . $image_src[0] . '">';
+    } else {
+      $image_output = wp_get_attachment_image( $id, 'item-l-9-16x9', false, $attr );
+    }
 
     $output .= "
       <div class='gallery-image-holder {$orientation}'>
