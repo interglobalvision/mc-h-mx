@@ -50,12 +50,24 @@ Site = {
 Site.Parallax = {
   init: function() {
 
-    $.stellar({
-      horizontalScrolling: false,
-      horizontalOffset: 0,
-      positionProperty: 'transform',
-      hideDistantElements: false,
-    });
+    if ($('.project-overlay-content').length) {
+
+      $.stellar({
+        horizontalScrolling: false,
+        verticalOffset: $('.project-overlay-content').offset().top,
+        positionProperty: 'transform',
+        hideDistantElements: false,
+      });
+
+    } else if ($('body').hasClass('page-home')) {
+
+      $.stellar({
+        horizontalScrolling: false,
+        positionProperty: 'transform',
+        hideDistantElements: false,
+      });
+
+    }
 
   },
 };
