@@ -8,6 +8,7 @@ get_header();
 if( have_posts() ) {
   while( have_posts() ) {
     the_post();
+    $projects = get_post_meta($post->ID, '_igv_home_projects', true);
 ?>
       <article <?php post_class('grid-row margin-top-small'); ?> id="post-<?php the_ID(); ?>">
 
@@ -16,7 +17,17 @@ if( have_posts() ) {
         </div>
 
         <div class="grid-item item-s-12 project-content">
-          <?php the_content(); ?>
+          <?php
+            if ($projects) {
+          ?>
+          <div class="project-overlay-content grid-row">
+            <?php render_items($projects); ?>
+          </div>
+          <?php
+            }
+
+            the_content();
+          ?>
         </div>
 
       </article>
