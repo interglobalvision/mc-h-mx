@@ -1245,6 +1245,9 @@ html,
 #page-close svg path {
   stroke-width: 2.8px;
 }
+body.home #posts {
+  padding-bottom: 70px;
+}
 .stellar-item {
   transition: -webkit-transform 0.5s;
   transition: transform 0.5s;
@@ -1543,6 +1546,9 @@ html,
   }
   #page-close svg path {
     stroke-width: 3.5px;
+  }
+  body.home #posts {
+    padding-bottom: 105px;
   }
   .stellar-item {
     transition: none;
@@ -1855,6 +1861,9 @@ html,
   }
   #page-close svg path {
     stroke-width: 4.199999999999999px;
+  }
+  body.home #posts {
+    padding-bottom: 120px;
   }
   .project-title,
   .project-content p,
