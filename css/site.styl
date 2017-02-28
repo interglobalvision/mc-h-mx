@@ -42,6 +42,9 @@ img
   max-width: 100%
   height: auto
 
+.only-desktop
+  display: none
+
 .gallery-image-holder
   margin-bottom: 1rem
 
@@ -151,7 +154,7 @@ home-project-item
     position: absolute
     border: solid $color-black
     top: -13px
-    left: -18px
+    left: -19px
     width: 30px
     height: 30px
     border-width: 0 4px 0 0
@@ -160,7 +163,7 @@ home-project-item
     position: absolute
     border: solid $color-black
     top: -13px
-    right: -18px
+    right: -19px
     width: 30px
     height: 30px
     border-width: 0 0 0 4px
@@ -197,6 +200,7 @@ home-project-item
   &::-webkit-slider-thumb
     -webkit-appearance: none
     border: solid $color-black
+    background-color: $color-white
     margin-top: 0
     border-width: 4px
     width: 15px
@@ -208,7 +212,7 @@ home-project-item
       outline: none
   &::-moz-range-thumb
     border: solid $color-black
-    background: transparent
+    background: $color-white
     cursor: grab
     border-radius: 0
     border-width: 4px
@@ -282,6 +286,9 @@ font-sizes($font-size-basic, false, $font-size-large)
   grid(100%, $gutter, m)
 
   font-sizes($font-size-basic, false, $font-size-large)
+
+  .only-desktop
+    display: initial
 
   @import 'responsive/tablet'
 
