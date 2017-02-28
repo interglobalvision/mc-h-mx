@@ -874,7 +874,7 @@ home-project-item {
   position: absolute;
   border: solid #000;
   top: -13px;
-  left: -14px;
+  left: -19px;
   width: 30px;
   height: 30px;
   border-width: 0 4px 0 0;
@@ -884,7 +884,7 @@ home-project-item {
   position: absolute;
   border: solid #000;
   top: -13px;
-  right: -14px;
+  right: -19px;
   width: 30px;
   height: 30px;
   border-width: 0 0 0 4px;
@@ -1557,6 +1557,12 @@ body.home #posts {
   body.home #posts {
     padding-bottom: 105px;
   }
+  .cam-fader-holder:after {
+    left: -16px;
+  }
+  .cam-fader-holder:before {
+    right: -15px;
+  }
   .stellar-item {
     transition: none;
   }
@@ -1871,6 +1877,12 @@ body.home #posts {
   }
   body.home #posts {
     padding-bottom: 120px;
+  }
+  .cam-fader-holder:after {
+    left: -14px;
+  }
+  .cam-fader-holder:before {
+    right: -14px;
   }
   .project-title,
   .project-content p,
