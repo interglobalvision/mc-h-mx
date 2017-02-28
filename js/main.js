@@ -90,8 +90,6 @@ Site.Camera = {
 
     if (Cookies.get('faderValue')) {
       _this.animateFader(Cookies.get('faderValue'));
-    } else {
-      _this.animateFader(100);
     }
   },
 
