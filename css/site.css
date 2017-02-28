@@ -757,6 +757,9 @@ img {
   max-width: 100%;
   height: auto;
 }
+.only-desktop {
+  display: none;
+}
 .gallery-image-holder {
   margin-bottom: 1rem;
 }
@@ -1538,6 +1541,9 @@ body.home #posts {
   }
   .font-size-large {
     font-size: 26px;
+  }
+  .only-desktop {
+    display: initial;
   }
   #main-content {
     padding-top: 58px;
