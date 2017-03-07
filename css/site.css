@@ -1252,6 +1252,10 @@ html,
 body.home #posts {
   padding-bottom: 70px;
 }
+.project-list-item {
+  margin-left: 14px;
+  text-indent: -14px;
+}
 .stellar-item {
   transition: -webkit-transform 0.5s;
   transition: transform 0.5s;
@@ -1556,6 +1560,10 @@ body.home #posts {
   }
   body.home #posts {
     padding-bottom: 105px;
+  }
+  .project-list-item {
+    margin-left: 21px;
+    text-indent: -21px;
   }
   .cam-fader-holder:after {
     left: -16px;
@@ -1877,6 +1885,10 @@ body.home #posts {
   }
   body.home #posts {
     padding-bottom: 120px;
+  }
+  .project-list-item {
+    margin-left: 24px;
+    text-indent: -24px;
   }
   .cam-fader-holder:after {
     left: -14px;

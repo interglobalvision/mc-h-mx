@@ -7,7 +7,7 @@ $current_project_id = $post->ID;
 if ($projects) {
   foreach ($projects as $project) {
 ?>
-    <li <?php if ($project->ID === $current_project_id) {echo 'class="font-italic"';} ?>><a href="<?php echo get_the_permalink($project->ID); ?>"><?php echo get_the_title($project->ID); ?></a></li>
+    <li <?php if ($project->ID === $current_project_id) {echo 'class="font-italic"';} ?>><a class="project-list-item u-inline-block" href="<?php echo get_the_permalink($project->ID); ?>"><?php echo get_the_title($project->ID); ?></a></li>
 <?php
   }
 }
