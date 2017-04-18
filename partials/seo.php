@@ -40,12 +40,14 @@ if (is_home()) {
 <?php
 } else if (is_single()) {
   global $post;
-  // trim post content by 600 chars
-  $excerpt = substr($post->post_content, 0, 600);
+  // strip shortcodes from post_content
+  $excerpt = strip_shortcodes($post->post_content);
   // strip html tags
   $excerpt = strip_tags($excerpt);
+  // trim post content by 600 chars
+  $excerpt = substr($excerpt, 0, 600);
   // add ... to end
-  $excerpt = $excerpt . '...';
+  $excerpt = $excerpt . '…';
   // clean special cars
   $excerpt = htmlspecialchars($excerpt);
 ?>
