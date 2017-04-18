@@ -784,7 +784,7 @@ body.home #page-close {
   display: none;
 }
 body.home h1 {
-  text-shadow: 0 0 10px #fff;
+  text-shadow: 0 0 50px #fff;
 }
 home-project-item {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
